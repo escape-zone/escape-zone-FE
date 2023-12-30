@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Layout from '@components/layout';
+import Layout from '@src/components/Layout';
 
 import { TbSend } from 'react-icons/tb';
 import useDetectDevice from '@hooks/useDetectDevice';
@@ -39,7 +39,7 @@ const ChatRoom = () => {
 				)
 			)}
 
-			<div className="btm-nav" style={isMobile ? {} : { minWidth: '760px', width: '1024px', left: '50%', transform: 'translate(-50%, -50%)', bottom: '-30px' }}>
+			<div className="btm-nav">
 				<div className="flex flex-row justify-center m-2">
 					<input type="text" placeholder="검색어를 입력해주세요" className="input input-bordered input w-full" />
 					<button className="btn btn-ghost">

@@ -28,10 +28,7 @@ const BottomNav = (props: IBottomNav) => {
 	};
 
 	return (
-		<div
-			className="flex btm-nav btm-nav-sm z-20 bg-neutral max-h-screen"
-			style={isMobile ? {} : { minWidth: '760px', width: '1024px', left: '50%', transform: 'translate(-50%, -50%)', bottom: '-24px' }}
-		>
+		<div className="flex btm-nav btm-nav-sm z-20 bg-neutral">
 			{BOTTOM_NAVIGATION.map((item) => (
 				<button key={item.name} className={router.pathname === item.url ? 'active' : ''} onClick={() => _handleNavLink(item.url)}>
 					{item.icon}

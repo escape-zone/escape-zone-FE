@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Layout from '@components/layout';
+import Layout from '@src/components/Layout';
 import SearchBar from '@components/SearchBar';
 import { useRouter } from 'next/router';
 import MaskStar from '@components/Mask/MaskStar';

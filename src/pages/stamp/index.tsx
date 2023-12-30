@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '@components/layout';
+import Layout from '@src/components/Layout';
 import Image from 'next/image';
 import useDetectDevice from '@hooks/useDetectDevice';
 import Tooltip from '@components/Tooltip';
