@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { TbHome, TbMessageCircle, TbRubberStamp, TbSettings, TbDoor } from 'react-icons/tb';
 
@@ -18,19 +18,20 @@ interface IBottomNav {
 const BottomNav = (props: IBottomNav) => {
 	const { isMobile } = props;
 
-	const router = useRouter();
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	/**
 	 * @description 링크 이동
 	 */
 	const _handleNavLink = (url: string) => {
-		router.push(url);
+		navigate(url);
 	};
 
 	return (
 		<div className="flex btm-nav btm-nav-sm z-20 bg-neutral">
 			{BOTTOM_NAVIGATION.map((item) => (
-				<button key={item.name} className={router.pathname === item.url ? 'active' : ''} onClick={() => _handleNavLink(item.url)}>
+				<button key={item.name} className={location.pathname === item.url ? 'active' : ''} onClick={() => _handleNavLink(item.url)}>
 					{item.icon}
 				</button>
 			))}

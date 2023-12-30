@@ -1,7 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 
-import Layout from '@src/components/Layout';
+import Layout from '@components/Layout';
 
 import { TbSend } from 'react-icons/tb';
 import useDetectDevice from '@hooks/useDetectDevice';
@@ -31,7 +30,7 @@ const ChatRoom = () => {
 					<div key={index} className="chat chat-start p-3">
 						<div className="chat-image avatar">
 							<div className="w-10 rounded-full">
-								<Image width={500} height={500} src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Album" />
+								<img width={500} height={500} src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Album" />
 							</div>
 						</div>
 						<div className="chat-bubble chat-bubble-secondary">{item.text}</div>

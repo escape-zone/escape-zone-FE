@@ -1,14 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 import { TbBell, TbSearch } from 'react-icons/tb';
 
-import logoText from '@assets/images/logo_text.png';
+// import logoText from '@assets/images/logo_text.png';
 
 const Header = () => {
-	const router = useRouter();
-
 	return (
 		<div className="input bg-primary-content h-fit">
 			<div className="flex items-center w-full navbar bg-primary-content p-0 min-h-0">
@@ -21,7 +17,7 @@ const Header = () => {
 				</div>
 				<div className="navbar-center">
 					{/* <a className="btn btn-ghost normal-case text-xl"> */}
-					<Image alt="logo" src={logoText.src} width={120} height={120} />
+					{/* <img alt="logo" src={logoText.src} width={120} height={120} /> */}
 					{/* </a> */}
 				</div>
 				<div className="navbar-end">

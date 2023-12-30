@@ -1,6 +1,5 @@
-import Layout from '@src/components/Layout';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Layout from '@components/Layout';
+import { useNavigate } from 'react-router-dom';
 
 interface IPeople {
 	name: string;
@@ -134,10 +133,10 @@ const people: IPeople[] = [
 ];
 
 const Chat = () => {
-	const router = useRouter();
+	const navigate = useNavigate();
 
 	const handleRoom = (person: IPeople) => {
-		router.push(`/chat/${person.roomId}`);
+		navigate(`/chat/${person.roomId}`);
 	};
 
 	return (
@@ -150,7 +149,7 @@ const Chat = () => {
 							className="overflow-hidden relative mx-auto bg-white shadow-lg ring-1 ring-black/5 rounded-xl gap-6 dark:bg-slate-800 dark:highlight-white/5"
 							onClick={() => handleRoom(person)}
 						>
-							<Image className="absolute -left-6 -top-2 w-28 h-28 rounded-full shadow-lg" src={person.imageUrl} alt="" width={100} height={100} />
+							<img className="absolute -left-6 -top-2 w-28 h-28 rounded-full shadow-lg" src={person.imageUrl} alt="" width={100} height={100} />
 							<div className="py-5 pl-28 pr-5">
 								<div className="flex flex-col">
 									<div className="text-slate-900 font-medium text-sm sm:text-base truncate dark:text-slate-200">Andrew Alfred</div>

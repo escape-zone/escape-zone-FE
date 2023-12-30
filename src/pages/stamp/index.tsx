@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Layout from '@src/components/Layout';
-import Image from 'next/image';
+import Layout from '@components/Layout';
 import useDetectDevice from '@hooks/useDetectDevice';
 import Tooltip from '@components/Tooltip';
 import MaskStar from '@components/Mask/MaskStar';
@@ -20,7 +19,7 @@ const Stamp = () => {
 						<div className="card-body items-center text-center">
 							<div className="avatar indicator">
 								<div className="w-24 rounded-full">
-									<Image src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" width={200} height={200} alt="Shoes" />
+									<img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" width={200} height={200} alt="Shoes" />
 									<div className="indicator-item indicator-bottom">
 										<div className="rating rating-sm">
 											<input type="radio" name="rating-3" className="mask mask-heart bg-red-400" defaultChecked />

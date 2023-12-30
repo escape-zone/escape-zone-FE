@@ -1,22 +1,21 @@
 import React from 'react';
-import Image from 'next/image';
 
-import Layout from '@src/components/Layout';
+import Layout from '@components/Layout';
 import SearchBar from '@components/SearchBar';
-import { useRouter } from 'next/router';
 import MaskStar from '@components/Mask/MaskStar';
+import { useNavigate } from 'react-router-dom';
 
 const TEST = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const Theme = () => {
-	const router = useRouter();
+	const navigate = useNavigate();
 
 	return (
 		<Layout isBottomNav={true}>
 			<div className="grid gap-4 grid-cols-1">
 				<SearchBar />
 				<div className="flex justify-center">
-					<button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={() => router.push('/theme/create')}>
+					<button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={() => navigate('/theme/create')}>
 						내가 찾는 테마가 없다면?
 					</button>
 				</div>

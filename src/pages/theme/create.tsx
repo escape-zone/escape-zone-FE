@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import Layout from '@src/components/Layout';
+import Layout from '@components/Layout';
 import MaskStar from '@components/Mask/MaskStar';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { dialogState } from '@recoil/dialog';
-import { useRouter } from 'next/router';
 
 import { RiImageAddLine } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 
 const CATEGORY = [
 	{ index: 0, text: '전체' },
@@ -25,7 +25,7 @@ const ThemeCreate = () => {
 
 	const [category, setCategory] = useState(CATEGORY[0]);
 
-	const router = useRouter();
+	const navigate = useNavigate();
 
 	const _handleCategory = (value: string) => {
 		setCategory(CATEGORY.find((item) => item.text === value) || CATEGORY[0]);
@@ -40,7 +40,7 @@ const ThemeCreate = () => {
 			title: '취소하시겠습니까?',
 			text: ['작성된 내용이 저장되지 않고', '페이지를 나가게 됩니다'],
 			callbackFunc: () => {
-				router.back();
+				navigate(-1);
 			}
 		});
 	};

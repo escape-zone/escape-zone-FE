@@ -1,9 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
 
 import { Player } from '@lottiefiles/react-lottie-player';
 
-import kakaoLogin from '@assets/images/users/kakao_login_large.png';
+// import kakaoLogin from '@assets/images/users/kakao_login_large.png';
 import loginLottie from '@assets/lottie/login.json';
 
 const Login = () => {
@@ -21,9 +20,7 @@ const Login = () => {
 
 						<Player autoplay speed={1} loop src={loginLottie} style={{ height: '300px', width: '300px' }} />
 
-						<button className="btn btn-link">
-							<Image alt="kakaoLogin" src={kakaoLogin.src} width={500} height={100} />
-						</button>
+						<button className="btn btn-link">{/* <img alt="kakaoLogin" src={kakaoLogin.src} width={500} height={100} /> */}</button>
 
 						<div className="mt-6 items-center text-center">
 							<p className="text-xs text-gray-600">

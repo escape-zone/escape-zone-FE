@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { useRouter } from 'next/router';
 
 import BottomNav from './BottomNav';
 import Header from './Header';
@@ -23,7 +22,6 @@ interface ILayout {
 const Layout = (props: ILayout) => {
 	const { children, isBottomNav = true } = props;
 
-	const router = useRouter();
 	const isMobile = useDetectDevice();
 
 	const toast = useRecoilValue<IToast>(toastState);
