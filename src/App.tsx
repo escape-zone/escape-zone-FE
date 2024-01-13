@@ -10,7 +10,6 @@ import Stamp from '@pages/stamp';
 import Theme from '@pages/theme';
 import ThemeCreate from '@pages/theme/create';
 import Login from '@pages/user/login';
-import UserSetting from '@pages/user/setting';
 import Register from '@pages/user/register';
 
 import Toast from '@atoms/Toast';
@@ -40,7 +39,6 @@ function App() {
 				<Route path="/theme/create" element={<ThemeCreate />}></Route>
 				<Route path="/register" element={<Register />}></Route>
 				<Route path="/login" element={<Login />}></Route>
-				<Route path="/user/setting" element={<UserSetting />}></Route>
 			</Routes>
 
 			{toast.isOpen && <Toast />}

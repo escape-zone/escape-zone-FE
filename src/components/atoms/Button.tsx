@@ -10,12 +10,13 @@ export enum ButtonType {
 	Primary = 'primary',
 	Secondary = 'secondary',
 	Accent = 'accent',
-	Neutral = 'neutral'
+	Neutral = 'neutral',
+	Link = 'link'
 }
 
 export enum ButtonSize {
 	Large = 'lg',
-	Normal = '',
+	Normal = 'md',
 	Small = 'sm',
 	Tiny = 'xs'
 }

@@ -43,6 +43,15 @@ export const userRegister = async (body: { id: string; password: string; name: s
 	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
 		.then((res) => res.json())
 		.catch((error) => {
-			console.error('ALVIE CHECK ERROR : ', error);
+			console.error(error);
+		});
+};
+
+export const userLogin = async (body: { id: string; password: string }) => {
+	const url = `${config.apiUrl}/users/login`;
+	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
+		.then((res) => res.json())
+		.catch((error) => {
+			console.error(error);
 		});
 };

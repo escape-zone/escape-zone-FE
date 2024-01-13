@@ -1,5 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { useSetRecoilState } from 'recoil';
+
+import Input, { InputType } from '@components/atoms/Input';
+import Button, { ButtonType } from '@components/atoms/Button';
+import Divider, { DividerType } from '@components/atoms/Divider';
 
 import { Player } from '@lottiefiles/react-lottie-player';
 
@@ -7,21 +13,46 @@ import loginLottie from '@assets/lottie/login.json';
 
 import UserLayer from '@pages/user/userLayer';
 
-import Input, { InputType } from '@components/atoms/Input';
-import Button, { ButtonType } from '@components/atoms/Button';
-import Divider, { DividerType } from '@components/atoms/Divider';
-import { aliveCheck } from '@src/api/aliveCheck';
+import { aliveCheck } from '@api/aliveCheck';
+import { userLogin } from '@api/user';
+
+import { koreanReg, specialTextReg } from '@constants/regex';
+
+import { toastState } from '@recoil/toast';
 
 const Login = () => {
 	const navigate = useNavigate();
+	const setToast = useSetRecoilState(toastState);
+
+	const [userInfo, setUserInfo] = useState({ id: '', password: '' });
 
 	useEffect(() => {
-		alive();
+		// alive();
 	}, []);
 
 	const alive = async () => {
 		const a = await aliveCheck();
 		console.log(a);
+	};
+
+	const handleUser = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target;
+
+		const inputValue = name === 'id' ? value.replace(koreanReg, '').replace(specialTextReg, '').trim() : value.trim();
+		setUserInfo((userInfo) => ({ ...userInfo, [name]: inputValue }));
+	}, []);
+
+	const handleLogin = () => {
+		console.log('LOGIN API');
+
+		const checkEmpty = Object.values(userInfo).some((value) => value);
+		if (!checkEmpty) {
+			setToast({ isOpen: true, type: 'info', text: '아이디 또는 비밀번호를 입력해주세요' });
+			return;
+		}
+
+		const response = userLogin(userInfo);
+		console.log(response);
 	};
 
 	return (
@@ -35,29 +66,9 @@ const Login = () => {
 
 			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '250px', width: '250px' }} />
 
-			<Input
-				type={InputType.Text}
-				placeholder="아이디"
-				value=""
-				onChange={(e) => {
-					console.log(e);
-				}}
-			/>
-			<Input
-				type={InputType.Password}
-				placeholder="비밀번호"
-				value=""
-				onChange={(e) => {
-					console.log(e);
-				}}
-			/>
-			<Button
-				type={ButtonType.Primary}
-				text="시작하기"
-				onClick={() => {
-					console.log('LOGIN API');
-				}}
-			/>
+			<Input type={InputType.Text} placeholder="아이디" value={userInfo.id} onChange={handleUser} />
+			<Input type={InputType.Password} placeholder="비밀번호" value={userInfo.password} onChange={handleUser} />
+			<Button type={ButtonType.Primary} text="시작하기" onClick={handleLogin} />
 			<Divider type={DividerType.Default} text="계정이 없다면" />
 			<Button
 				type={ButtonType.Primary}

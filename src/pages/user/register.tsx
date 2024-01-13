@@ -1,19 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
+
+import Button, { ButtonType } from '@components/atoms/Button';
+import Input, { InputType } from '@components/atoms/Input';
 
 import UserLayer from '@pages/user/userLayer';
 
 import logo from '@assets/images/logo_icon.png';
 
-import Button, { ButtonType } from '@components/atoms/Button';
-import Input, { InputType } from '@components/atoms/Input';
-
 import { englishReg, koreanReg, specialTextReg } from '@constants/regex';
 
 import { userRegister } from '@api/user';
-import { IToast, toastState } from '@recoil/toast';
+
+import { toastState } from '@recoil/toast';
 
 function Register() {
 	const navigate = useNavigate();
@@ -37,16 +38,14 @@ function Register() {
 	}, []);
 
 	const handleRegister = () => {
-		console.log('?? handleRegister');
 		const checkEmpty = Object.values(userInfo).some((value) => value);
 		if (!checkEmpty) {
-			console.log(checkEmpty);
-			// toast
 			setToast({ isOpen: true, type: 'info', text: '정보를 입력해주세요' });
 			return;
 		}
 
-		userRegister(userInfo);
+		const response = userRegister(userInfo);
+		console.log(response);
 	};
 
 	return (
