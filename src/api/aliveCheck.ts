@@ -2,7 +2,7 @@ import config from '@src/config';
 
 export const aliveCheck = async () => {
 	try {
-		const ALIVE_CHECK = `${config.apiUrl}/alive`;
+		const ALIVE_CHECK = `${config.apiUrl}/check`;
 		return await fetch(ALIVE_CHECK, {
 			method: 'GET',
 			headers: {

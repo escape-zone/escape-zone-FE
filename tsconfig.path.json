@@ -6,7 +6,8 @@
 			"@recoil/*": ["src/recoil/*"],
 			"@hooks/*": ["src/hooks/*"],
 			"@assets/*": ["src/assets/*"],
-			"@components/*": ["src/components/*"]
+			"@components/*": ["src/components/*"],
+			"@pages/*": ["src/pages/*"]
 		}
 	}
 }

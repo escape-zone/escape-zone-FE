@@ -9,7 +9,7 @@ import { IDialog, dialogState } from '@recoil/dialog';
 import { IProgress, progressState } from '@recoil/progress';
 
 import Toast from '@components/Toast';
-import Dialog from '@components/Dialog';
+import Dialog from '@src/components/atoms/Dialog';
 import Progress from '@components/Progress';
 
 import useDetectDevice from '@hooks/useDetectDevice';
@@ -29,7 +29,7 @@ const Layout = (props: ILayout) => {
 	const progress = useRecoilValue<IProgress>(progressState);
 
 	return (
-		<div className="mockup-browser bg-white p-1">
+		<div className="mockup-browser bg-white p-1" style={{ borderRadius: 0 }}>
 			<Header />
 			<div className="flex bg-neutral-content justify-center p-4 border-base-300">
 				<div className="flex bg-neutral-content justify-center">
