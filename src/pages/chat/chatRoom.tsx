@@ -1,8 +1,8 @@
 import React from 'react';
+import { TbSend } from 'react-icons/tb';
 
 import Layout from '@components/Layout';
 
-import { TbSend } from 'react-icons/tb';
 import useDetectDevice from '@hooks/useDetectDevice';
 
 const CHAT = [

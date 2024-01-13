@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Player } from '@lottiefiles/react-lottie-player';
@@ -10,9 +10,14 @@ import UserLayer from '@pages/user/userLayer';
 import Input, { InputType } from '@components/atoms/Input';
 import Button, { ButtonType } from '@components/atoms/Button';
 import Divider, { DividerType } from '@components/atoms/Divider';
+import { aliveCheck } from '@src/api/aliveCheck';
 
 const Login = () => {
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		// aliveCheck();
+	}, []);
 
 	return (
 		<UserLayer>
@@ -23,7 +28,7 @@ const Login = () => {
 				당신의 모험을 시작해보세요
 			</p>
 
-			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '300px', width: '300px' }} />
+			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '250px', width: '250px' }} />
 
 			<Input type={InputType.Text} placeholder="아이디" />
 			<Input type={InputType.Password} placeholder="비밀번호" />

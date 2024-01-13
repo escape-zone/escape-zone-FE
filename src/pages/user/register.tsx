@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { aliveCheck } from '@src/api/aliveCheck';
-
 import UserLayer from '@pages/user/userLayer';
 
 import logo from '@assets/images/logo_icon.png';
@@ -12,10 +10,6 @@ import Input, { InputType } from '@components/atoms/Input';
 
 function Register() {
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		// aliveCheck();
-	}, []);
 
 	return (
 		<UserLayer>
