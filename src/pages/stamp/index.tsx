@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Layout from '@components/Layout';
+import Layout from '@src/components/molecules/Layout';
+import Tooltip from '@components/atoms/Tooltip';
+import MaskStar from '@src/components/molecules/Mask/MaskStar';
+
 import useDetectDevice from '@hooks/useDetectDevice';
-import Tooltip from '@components/Tooltip';
-import MaskStar from '@components/Mask/MaskStar';
 
 const STAMPLIST = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 

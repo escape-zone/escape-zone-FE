@@ -1,9 +1,13 @@
 import React from 'react';
 
-import Main from '@components/Main';
+import Layout from '@src/components/molecules/Layout';
 
 const Home = () => {
-	return <Main />;
+	return (
+		<Layout isBottomNav={true}>
+			<div>HOME</div>
+		</Layout>
+	);
 };
 
 export default Home;

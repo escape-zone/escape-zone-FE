@@ -1,4 +1,4 @@
-import Layout from '@components/Layout';
+import Layout from '@src/components/molecules/Layout';
 import { useNavigate } from 'react-router-dom';
 
 interface IPeople {

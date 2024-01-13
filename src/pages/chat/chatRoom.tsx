@@ -1,7 +1,7 @@
 import React from 'react';
 import { TbSend } from 'react-icons/tb';
 
-import Layout from '@components/Layout';
+import Layout from '@src/components/molecules/Layout';
 
 import useDetectDevice from '@hooks/useDetectDevice';
 

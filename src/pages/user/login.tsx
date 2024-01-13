@@ -10,14 +10,9 @@ import UserLayer from '@pages/user/userLayer';
 import Input, { InputType } from '@components/atoms/Input';
 import Button, { ButtonType } from '@components/atoms/Button';
 import Divider, { DividerType } from '@components/atoms/Divider';
-import { aliveCheck } from '@src/api/aliveCheck';
 
 const Login = () => {
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		// aliveCheck();
-	}, []);
 
 	return (
 		<UserLayer>

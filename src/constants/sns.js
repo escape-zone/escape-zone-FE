@@ -1,1 +1,0 @@
-export const KAKAO_REST_KEY = '26ec612103ffbbb5212713c5cea3d238'

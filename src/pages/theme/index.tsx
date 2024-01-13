@@ -1,9 +1,9 @@
 import React from 'react';
-
-import Layout from '@components/Layout';
-import SearchBar from '@components/SearchBar';
-import MaskStar from '@components/Mask/MaskStar';
 import { useNavigate } from 'react-router-dom';
+
+import Layout from '@src/components/molecules/Layout';
+import SearchBar from '@components/molecules/SearchBar';
+import MaskStar from '@components/molecules/Mask/MaskStar';
 
 const TEST = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 

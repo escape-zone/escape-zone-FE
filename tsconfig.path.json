@@ -3,11 +3,15 @@
 		"baseUrl": ".",
 		"paths": {
 			"@src/*": ["src/*"],
+			"@api/*": ["src/api/*"],
 			"@recoil/*": ["src/recoil/*"],
 			"@hooks/*": ["src/hooks/*"],
 			"@assets/*": ["src/assets/*"],
 			"@components/*": ["src/components/*"],
-			"@pages/*": ["src/pages/*"]
+			"@atoms/*": ["src/components/atoms/*"],
+			"@molecules/*": ["src/components/molecules/*"],
+			"@pages/*": ["src/pages/*"],
+			"@constants/*": ["src/constants/*"]
 		}
 	}
 }

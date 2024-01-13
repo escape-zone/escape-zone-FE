@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Layout from '@components/Layout';
-import MaskStar from '@components/Mask/MaskStar';
+import Layout from '@src/components/molecules/Layout';
+import MaskStar from '@src/components/molecules/Mask/MaskStar';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { dialogState } from '@recoil/dialog';
 

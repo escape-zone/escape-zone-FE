@@ -8,9 +8,9 @@ import { toastState, IToast } from '@recoil/toast';
 import { IDialog, dialogState } from '@recoil/dialog';
 import { IProgress, progressState } from '@recoil/progress';
 
-import Toast from '@components/Toast';
-import Dialog from '@src/components/atoms/Dialog';
-import Progress from '@components/Progress';
+import Toast from '@components/atoms/Toast';
+import Dialog from '@components/atoms/Dialog';
+import Progress from '@components/atoms/Progress';
 
 import useDetectDevice from '@hooks/useDetectDevice';
 
