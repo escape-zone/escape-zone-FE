@@ -10,9 +10,19 @@ import UserLayer from '@pages/user/userLayer';
 import Input, { InputType } from '@components/atoms/Input';
 import Button, { ButtonType } from '@components/atoms/Button';
 import Divider, { DividerType } from '@components/atoms/Divider';
+import { aliveCheck } from '@src/api/aliveCheck';
 
 const Login = () => {
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		alive();
+	}, []);
+
+	const alive = async () => {
+		const a = await aliveCheck();
+		console.log(a);
+	};
 
 	return (
 		<UserLayer>
@@ -25,8 +35,22 @@ const Login = () => {
 
 			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '250px', width: '250px' }} />
 
-			<Input type={InputType.Text} placeholder="아이디" />
-			<Input type={InputType.Password} placeholder="비밀번호" />
+			<Input
+				type={InputType.Text}
+				placeholder="아이디"
+				value=""
+				onChange={(e) => {
+					console.log(e);
+				}}
+			/>
+			<Input
+				type={InputType.Password}
+				placeholder="비밀번호"
+				value=""
+				onChange={(e) => {
+					console.log(e);
+				}}
+			/>
 			<Button
 				type={ButtonType.Primary}
 				text="시작하기"

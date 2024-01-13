@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import { TbHome, TbMessageCircle, TbRubberStamp, TbSettings, TbDoor } from 'react-icons/tb';
 
+import Icon from '@atoms/Icon';
+
 const BOTTOM_NAVIGATION = [
 	{ name: 'theme', icon: <TbDoor size="20px" />, url: '/theme' },
 	{ name: 'stamp', icon: <TbRubberStamp size="20px" />, url: '/stamp' },
@@ -32,7 +34,7 @@ const BottomNav = (props: IBottomNav) => {
 		<div className="flex btm-nav btm-nav-sm z-20 bg-neutral">
 			{BOTTOM_NAVIGATION.map((item) => (
 				<button key={item.name} className={location.pathname === item.url ? 'active' : ''} onClick={() => _handleNavLink(item.url)}>
-					{item.icon}
+					<Icon>{item.icon}</Icon>
 				</button>
 			))}
 		</div>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { TbSend } from 'react-icons/tb';
 
-import Layout from '@src/components/molecules/Layout';
+import Layout from '@molecules/Layout';
+import Icon from '@atoms/Icon';
 
 import useDetectDevice from '@hooks/useDetectDevice';
 
@@ -42,7 +43,9 @@ const ChatRoom = () => {
 				<div className="flex flex-row justify-center m-2">
 					<input type="text" placeholder="검색어를 입력해주세요" className="input input-bordered input w-full" />
 					<button className="btn btn-ghost">
-						<TbSend size="20px" />
+						<Icon>
+							<TbSend size="20px" />
+						</Icon>
 					</button>
 				</div>
 			</div>

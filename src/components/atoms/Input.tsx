@@ -15,11 +15,14 @@ export enum InputSize {
 interface Props {
 	type: InputType;
 	size?: InputSize;
+	value: string;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	label?: string;
 	placeholder?: string;
+	name?: string;
 }
 
-function Input({ type, size = InputSize.Normal, label = '', placeholder = '' }: Props) {
+function Input({ type, value, onChange, size = InputSize.Normal, label = '', placeholder = '', ...props }: Props) {
 	return (
 		<label className="form-control w-full max-w-xs">
 			{label && (
@@ -32,6 +35,9 @@ function Input({ type, size = InputSize.Normal, label = '', placeholder = '' }: 
 				placeholder={placeholder}
 				className={`input input-bordered input-${size} w-full max-w-xs`}
 				style={{ backgroundColor: 'rgb(245 245 245)' }}
+				value={value}
+				onChange={onChange}
+				{...props}
 			/>
 		</label>
 	);

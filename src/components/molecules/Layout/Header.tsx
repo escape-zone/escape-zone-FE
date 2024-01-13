@@ -2,6 +2,7 @@ import React from 'react';
 
 import { TbBell, TbSearch } from 'react-icons/tb';
 
+import Icon from '@atoms/Icon';
 // import logoText from '@assets/images/logo_text.png';
 
 const Header = () => {
@@ -25,7 +26,9 @@ const Header = () => {
 						<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
 							<button className="btn btn-ghost btn-circle">
 								<div className="indicator">
-									<TbBell size="20px" />
+									<Icon>
+										<TbBell size="20px" />
+									</Icon>
 									<span className="badge badge-xs badge-primary indicator-item"></span>
 								</div>
 							</button>

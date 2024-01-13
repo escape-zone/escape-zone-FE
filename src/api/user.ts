@@ -37,3 +37,12 @@ export const naverRegister = async () => {
 		console.error('NAVER REGISTER ERROR : ', error);
 	}
 };
+
+export const userRegister = async (body: { id: string; password: string; name: string; nickName: string }) => {
+	const url = `${config.apiUrl}/users/register`;
+	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
+		.then((res) => res.json())
+		.catch((error) => {
+			console.error('ALVIE CHECK ERROR : ', error);
+		});
+};
