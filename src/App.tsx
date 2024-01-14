@@ -1,14 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Home from './pages';
 import Chat from '@pages/chat';
-import ChatRoom from '@pages/chat/chatRoom';
-import Search from '@pages/search';
+import ChatRoom from '@src/pages/chat/room';
 import Setting from '@pages/setting';
 import Stamp from '@pages/stamp';
-import Theme from '@pages/theme';
-import ThemeCreate from '@pages/theme/create';
+import Room from '@pages/room';
+import RoomCreate from '@src/pages/room/create';
 import Login from '@pages/user/login';
 import Register from '@pages/user/register';
 
@@ -29,16 +27,14 @@ function App() {
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<Home />}></Route>
+				<Route path="/" element={<Room />}></Route>
+				<Route path="/create" element={<RoomCreate />}></Route>
 				<Route path="/chat" element={<Chat />}></Route>
 				<Route path="/chat/:id" element={<ChatRoom />}></Route>
-				<Route path="/search" element={<Search />}></Route>
 				<Route path="/setting" element={<Setting />}></Route>
 				<Route path="/stamp" element={<Stamp />}></Route>
-				<Route path="/theme" element={<Theme />}></Route>
-				<Route path="/theme/create" element={<ThemeCreate />}></Route>
-				<Route path="/register" element={<Register />}></Route>
 				<Route path="/login" element={<Login />}></Route>
+				<Route path="/register" element={<Register />}></Route>
 			</Routes>
 
 			{toast.isOpen && <Toast />}

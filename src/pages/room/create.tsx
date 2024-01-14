@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-
-import Layout from '@src/components/molecules/Layout';
-import MaskStar from '@src/components/molecules/Mask/MaskStar';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
+import { RiImageAddLine } from 'react-icons/ri';
+
+import Layout from '@components/molecules/Layout';
+import MaskStar from '@components/atoms/MaskStar';
+
 import { dialogState } from '@recoil/dialog';
 
 import Icon from '@atoms/Icon';
-
-import { RiImageAddLine } from 'react-icons/ri';
-import { useNavigate } from 'react-router-dom';
 
 const CATEGORY = [
 	{ index: 0, text: '전체' },

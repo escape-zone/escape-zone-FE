@@ -11,7 +11,8 @@ export enum ButtonType {
 	Secondary = 'secondary',
 	Accent = 'accent',
 	Neutral = 'neutral',
-	Link = 'link'
+	Link = 'link',
+	Ghost = 'ghost'
 }
 
 export enum ButtonSize {

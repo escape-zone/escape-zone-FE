@@ -5,6 +5,7 @@ import Divider, { DividerType } from '@src/components/atoms/Divider';
 import Input, { InputType } from '@src/components/atoms/Input';
 import { englishReg } from '@src/constants/regex';
 import Button, { ButtonType } from '@src/components/atoms/Button';
+import Stamp from '../stamp';
 
 const Setting = () => {
 	const [isHistory, setIsHistory] = useState(false);
@@ -80,7 +81,9 @@ const Setting = () => {
 					/>
 					<div className="collapse-title text-xl font-medium">참여내역</div>
 					<div className="collapse-content">
-						<div>참여내역</div>
+						<div>
+							<Stamp />
+						</div>
 					</div>
 				</div>
 			</div>

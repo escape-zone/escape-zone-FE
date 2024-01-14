@@ -141,7 +141,6 @@ const Chat = () => {
 
 	return (
 		<Layout isBottomNav={true}>
-			<h1 className="text-2xl font-bold p-4">CHAT</h1>
 			<div className="grid grid-cols-1 gap-4">
 				{people.map((person) => (
 					<button key={person.roomId}>

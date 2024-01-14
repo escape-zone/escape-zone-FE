@@ -1,14 +1,12 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { TbHome, TbMessageCircle, TbRubberStamp, TbSettings, TbDoor } from 'react-icons/tb';
+import { TbMessageCircle, TbSettings, TbDoor } from 'react-icons/tb';
 
 import Icon from '@atoms/Icon';
 
 const BOTTOM_NAVIGATION = [
-	{ name: 'theme', icon: <TbDoor size="20px" />, url: '/theme' },
-	{ name: 'stamp', icon: <TbRubberStamp size="20px" />, url: '/stamp' },
-	{ name: 'home', icon: <TbHome size="20px" />, url: '/' },
+	{ name: 'room', icon: <TbDoor size="20px" />, url: '/' },
 	{ name: 'chat', icon: <TbMessageCircle size="20px" />, url: '/chat' },
 	{ name: 'setting', icon: <TbSettings size="20px" />, url: '/setting' }
 ];

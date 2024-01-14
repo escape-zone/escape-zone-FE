@@ -16,7 +16,7 @@ const Layout = (props: ILayout) => {
 	const isMobile = useDetectDevice();
 
 	return (
-		<div className="mockup-browser bg-white p-1" style={{ borderRadius: 0 }}>
+		<div className="mockup-browser bg-white p-1 max-w-screen-md" style={{ borderRadius: 0 }}>
 			<Header />
 			<div className="flex bg-neutral-content justify-center p-4 border-base-300">
 				<div className="flex bg-neutral-content justify-center">
