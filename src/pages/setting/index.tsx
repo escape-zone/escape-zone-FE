@@ -30,7 +30,7 @@ const Setting = () => {
 	}, []);
 
 	return (
-		<Layout isBottomNav={true}>
+		<Layout isBottomNav={true} title={'My Info'}>
 			<div className="flex justify-center">
 				<div className="stats shadow bg-gray-50">
 					<div className="stat">

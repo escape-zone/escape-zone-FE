@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useRecoilValue } from 'recoil';
 import { progressState } from '@recoil/progress';
 

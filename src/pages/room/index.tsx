@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import MaskStar from '@components/atoms/MaskStar';
@@ -13,7 +12,7 @@ const Room = () => {
 	const navigate = useNavigate();
 
 	return (
-		<Layout isBottomNav={true}>
+		<Layout isBottomNav={true} title={'방 목록'}>
 			<div className="flex grid gap-4 grid-cols-1">
 				<div className="join gap-2">
 					<button className="btn btn-primary btn-wide text-xl" onClick={() => navigate('/create')}>
@@ -25,7 +24,7 @@ const Room = () => {
 				</div>
 
 				{TEST.map((product, index) => (
-					<div key={index} className="flex border p-3 rounded-xl hover:bg-orange-100 hover:cursor-pointer">
+					<div key={index} className="flex border p-3 rounded-xl hover:bg-primary-content hover:cursor-pointer">
 						<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 							<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" />
 						</div>

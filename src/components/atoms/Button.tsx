@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 export enum ButtonType {
@@ -28,7 +28,7 @@ interface Props {
 	size?: ButtonSize;
 	isOutline?: boolean;
 	isWide?: boolean;
-	icon?: ReactNode;
+	icon?: React.ReactNode;
 	isLoading?: boolean;
 	disabled?: boolean;
 	onClick: () => void;

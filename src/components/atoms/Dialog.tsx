@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 import { dialogState } from '@recoil/dialog';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Tooltip from '@components/atoms/Tooltip';
 import MaskStar from '@components/atoms/MaskStar';
 

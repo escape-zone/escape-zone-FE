@@ -1,5 +1,3 @@
-import React from 'react';
-
 export enum DividerType {
 	Info = 'info',
 	Success = 'success',

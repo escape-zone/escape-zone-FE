@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 interface ITooltip {
-	children: ReactNode;
+	children: React.ReactNode;
 	text: string;
 }
 

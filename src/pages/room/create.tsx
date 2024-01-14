@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { RiImageAddLine } from 'react-icons/ri';
@@ -10,7 +10,6 @@ import { dialogState } from '@recoil/dialog';
 
 import Icon from '@atoms/Icon';
 import Input, { InputSize, InputType } from '@src/components/atoms/Input';
-import UserLayer from '../user/userLayer';
 
 const CATEGORY = [
 	{ index: 0, text: '전체' },
@@ -50,7 +49,7 @@ const ThemeCreate = () => {
 	};
 
 	return (
-		<Layout isBottomNav={true}>
+		<Layout isBottomNav={true} title={'방 만들기'}>
 			<div className="border-b border-gray-900/10 pb-12 w-[550px]">
 				<div className="grid grid-cols-1 gap-x-2 gap-y-8">
 					<div className="col-span-full">

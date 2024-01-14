@@ -1,4 +1,3 @@
-import React from 'react';
 import { TbInfoCircle, TbCircleCheck } from 'react-icons/tb';
 
 import { useRecoilValue, useResetRecoilState } from 'recoil';

@@ -1,10 +1,7 @@
-import React from 'react';
 import { TbSend } from 'react-icons/tb';
 
 import Layout from '@molecules/Layout';
 import Icon from '@atoms/Icon';
-
-import useDetectDevice from '@hooks/useDetectDevice';
 
 const CHAT = [
 	{ id: 'me', text: 'It was said that you would, destroy the Sith, not join them.' },
@@ -18,10 +15,8 @@ const CHAT = [
 ];
 
 const ChatRoom = () => {
-	const isMobile = useDetectDevice();
-
 	return (
-		<Layout isBottomNav={false}>
+		<Layout isBottomNav={false} title={'채팅방 방제목'}>
 			{CHAT.map((item, index) =>
 				item.id === 'me' ? (
 					<div key={index} className="chat chat-end p-3">

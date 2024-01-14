@@ -140,7 +140,7 @@ const Chat = () => {
 	};
 
 	return (
-		<Layout isBottomNav={true}>
+		<Layout isBottomNav={true} title={'채팅방 목록'}>
 			<div className="grid grid-cols-1 gap-4 w-[550px]">
 				<div className="overflow-x-auto">
 					<table className="table">
@@ -148,7 +148,7 @@ const Chat = () => {
 							{people.map((person, index) => (
 								<tr
 									key={index}
-									className="hover:hover:bg-orange-100 hover:cursor-pointer"
+									className="hover:hover:bg-primary-content hover:cursor-pointer"
 									onClick={() => {
 										handleRoom(person);
 									}}
