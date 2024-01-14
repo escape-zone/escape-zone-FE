@@ -10,13 +10,7 @@ const BOTTOM_NAVIGATION = [
 	{ name: 'setting', icon: <TbSettings size="20px" />, url: '/setting' }
 ];
 
-interface IBottomNav {
-	isMobile: boolean;
-}
-
-const BottomNav = (props: IBottomNav) => {
-	const { isMobile } = props;
-
+const BottomNav = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 

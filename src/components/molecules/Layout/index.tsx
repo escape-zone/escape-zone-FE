@@ -1,19 +1,15 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 import BottomNav from './BottomNav';
 import Header from './Header';
 
-import useDetectDevice from '@hooks/useDetectDevice';
-
 interface Props {
-	children: ReactNode;
+	children: React.ReactNode;
 	isBottomNav: boolean;
 	title?: string;
 }
 
 const Layout = ({ children, title, isBottomNav = true }: Props) => {
-	const isMobile = useDetectDevice();
-
 	return (
 		<div className="flex justify-center">
 			<div className="mockup-browser bg-white p-1 w-[780px]" style={{ borderRadius: 0 }}>
@@ -21,7 +17,7 @@ const Layout = ({ children, title, isBottomNav = true }: Props) => {
 				<div className="flex bg-neutral-content justify-center p-4 border-base-300">
 					<div className="flex bg-neutral-content justify-center overflow-auto">
 						<div className="bg-neutral-content text-base-content min-h-screen overflow-auto">{children}</div>
-						{isBottomNav && <BottomNav isMobile={isMobile} />}
+						{isBottomNav && <BottomNav />}
 					</div>
 				</div>
 			</div>

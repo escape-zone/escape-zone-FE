@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const useTimeout = (callbackFunc: () => void, delay: number) => {
 	const savedCallback = useRef(callbackFunc);
