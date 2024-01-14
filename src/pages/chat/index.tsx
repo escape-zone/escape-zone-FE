@@ -141,7 +141,7 @@ const Chat = () => {
 
 	return (
 		<Layout isBottomNav={true}>
-			<div className="grid grid-cols-1 gap-4">
+			<div className="grid grid-cols-1 gap-4 w-[550px]">
 				{people.map((person) => (
 					<button key={person.roomId}>
 						<div

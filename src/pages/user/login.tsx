@@ -16,7 +16,7 @@ import UserLayer from '@pages/user/userLayer';
 import { aliveCheck } from '@api/aliveCheck';
 import { userLogin } from '@api/user';
 
-import { koreanReg, specialTextReg } from '@constants/regex';
+import { emailSpecialTextReg, koreanReg } from '@constants/regex';
 
 import { toastState } from '@recoil/toast';
 
@@ -24,7 +24,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const setToast = useSetRecoilState(toastState);
 
-	const [userInfo, setUserInfo] = useState({ id: '', password: '' });
+	const [userInfo, setUserInfo] = useState({ email: '', password: '' });
 
 	useEffect(() => {
 		// alive();
@@ -38,7 +38,7 @@ const Login = () => {
 	const handleUser = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 
-		const inputValue = name === 'id' ? value.replace(koreanReg, '').replace(specialTextReg, '').trim() : value.trim();
+		const inputValue = name === 'email' ? value.replace(koreanReg, '').replace(emailSpecialTextReg, '').trim() : value.trim();
 		setUserInfo((userInfo) => ({ ...userInfo, [name]: inputValue }));
 	}, []);
 
@@ -66,8 +66,8 @@ const Login = () => {
 
 			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '250px', width: '250px' }} />
 
-			<Input type={InputType.Text} placeholder="아이디" value={userInfo.id} onChange={handleUser} />
-			<Input type={InputType.Password} placeholder="비밀번호" value={userInfo.password} onChange={handleUser} />
+			<Input type={InputType.Text} placeholder="이메일" name="email" value={userInfo.email} onChange={handleUser} />
+			<Input type={InputType.Password} placeholder="비밀번호" name="password" value={userInfo.password} onChange={handleUser} />
 			<Button type={ButtonType.Primary} text="시작하기" onClick={handleLogin} />
 			<Divider type={DividerType.Default} text="계정이 없다면" />
 			<Button

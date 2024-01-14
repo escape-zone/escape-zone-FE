@@ -9,7 +9,6 @@ const MaskStar = (props: IMaskStar) => {
 	const { index, size = 'sm' } = props;
 
 	return (
-		// <div className="badge badge-neutral">
 		<div className={`rating rating-${size} rating-half`}>
 			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled />
 			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
@@ -22,7 +21,6 @@ const MaskStar = (props: IMaskStar) => {
 			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled />
 			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
 		</div>
-		// </div>
 	);
 };
 

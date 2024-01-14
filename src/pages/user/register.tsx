@@ -10,7 +10,7 @@ import UserLayer from '@pages/user/userLayer';
 
 import logo from '@assets/images/logo_icon.png';
 
-import { englishReg, koreanReg, specialTextReg } from '@constants/regex';
+import { emailSpecialTextReg, englishReg, koreanReg } from '@constants/regex';
 
 import { userRegister } from '@api/user';
 
@@ -21,7 +21,7 @@ function Register() {
 
 	const setToast = useSetRecoilState(toastState);
 
-	const [userInfo, setUserInfo] = useState({ name: '', nickName: '', id: '', password: '' });
+	const [userInfo, setUserInfo] = useState({ name: '', nickName: '', email: '', password: '' });
 
 	const handleUser = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -30,8 +30,10 @@ function Register() {
 
 		if (name === 'name') {
 			inputValue = value.replace(englishReg, '');
-		} else if (name === 'id') {
-			inputValue = value.replace(koreanReg, '').replace(specialTextReg, '');
+		}
+
+		if (name === 'email') {
+			inputValue = value.replace(koreanReg, '').replace(emailSpecialTextReg, '');
 		}
 
 		setUserInfo((userInfo) => ({ ...userInfo, [name]: inputValue }));
@@ -55,7 +57,7 @@ function Register() {
 			</div>
 			<Input type={InputType.Text} name="name" label="이름" placeholder="이름" value={userInfo.name} onChange={handleUser} />
 			<Input type={InputType.Text} name="nickName" label="닉네임" placeholder="닉네임" value={userInfo.nickName} onChange={handleUser} />
-			<Input type={InputType.Text} name="id" label="아이디" placeholder="아이디" value={userInfo.id} onChange={handleUser} />
+			<Input type={InputType.Text} name="email" label="이메일" placeholder="이메일" value={userInfo.email} onChange={handleUser} />
 			<Input type={InputType.Password} name="password" label="비밀번호" placeholder="비밀번호" value={userInfo.password} onChange={handleUser} />
 
 			<div className="grid gap-4 grid-cols-1 pt-3">

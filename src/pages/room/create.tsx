@@ -9,6 +9,8 @@ import MaskStar from '@components/atoms/MaskStar';
 import { dialogState } from '@recoil/dialog';
 
 import Icon from '@atoms/Icon';
+import Input, { InputSize, InputType } from '@src/components/atoms/Input';
+import UserLayer from '../user/userLayer';
 
 const CATEGORY = [
 	{ index: 0, text: '전체' },
@@ -49,77 +51,70 @@ const ThemeCreate = () => {
 
 	return (
 		<Layout isBottomNav={true}>
-			<div className="m-2">
-				<div className="border-b border-gray-900/10 pb-12">
-					<div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-						<div className="col-span-full">
-							<h2 className="text-base font-semibold leading-7 text-gray-900">카테고리</h2>
-							<div className="mt-2">
-								<select className="select select-sm w-full" onChange={(e) => _handleCategory(e.target.value)} value={category.text}>
-									{CATEGORY.map((item) => (
-										<option key={item.index}>{item.text}</option>
-									))}
-								</select>
-							</div>
-						</div>
-
-						<div className="col-span-full">
-							<h2 className="text-base font-semibold leading-7 text-gray-900">난이도</h2>
-							<div className="mt-2">
-								<MaskStar index={1} size="lg" />
-							</div>
-						</div>
-
-						<div className="col-span-full">
-							<h2 className="text-base font-semibold leading-7 text-gray-900">포스터 및 대표사진</h2>
-							<div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-								<div className="text-center">
-									<Icon>
-										<RiImageAddLine size="30px" color="grey" />
-									</Icon>
-									<div className="mt-4 flex text-sm leading-6 text-gray-600">
-										<label
-											htmlFor="file-upload"
-											className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-										>
-											<p>사진 올리기</p>
-											<input id="file-upload" name="file-upload" type="file" className="sr-only" />
-										</label>
-									</div>
-									<p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-								</div>
-							</div>
-						</div>
-
-						<div className="col-span-full">
-							<h2 className="text-base font-semibold leading-7 text-gray-900">위치</h2>
-							<div className="mt-2">
-								<input
-									type="text"
-									name="first-name"
-									id="first-name"
-									autoComplete="given-name"
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-								/>
-							</div>
-						</div>
-
-						<div className="col-span-full">
-							<h2 className="text-base font-semibold leading-7 text-gray-900">About</h2>
-							<div className="mt-2">
-								<textarea
-									id="about"
-									name="about"
-									rows={3}
-									className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-									defaultValue={''}
-								/>
-							</div>
-							<p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
+			<div className="border-b border-gray-900/10 pb-12 w-[550px]">
+				<div className="grid grid-cols-1 gap-x-2 gap-y-8">
+					<div className="col-span-full">
+						<h2 className="text-base font-semibold leading-7 text-gray-900">카테고리</h2>
+						<div className="mt-2">
+							<select className="select select-bordered w-full" value={category.text} onChange={(e) => _handleCategory(e.target.value)}>
+								{CATEGORY.map((item) => (
+									<option key={item.index}>{item.text}</option>
+								))}
+							</select>
 						</div>
 					</div>
-				</div>
 
+					<div>
+						<h2 className="text-base font-semibold leading-7 text-gray-900">제목</h2>
+						<div className="mt-2">
+							<Input name="title" value="" type={InputType.Text} size={InputSize.Large} onChange={() => {}} />
+						</div>
+					</div>
+
+					<div className="col-span-full">
+						<h2 className="text-base font-semibold leading-7 text-gray-900">난이도</h2>
+						<div className="mt-2">
+							<MaskStar index={1} size="lg" />
+						</div>
+					</div>
+
+					<div className="col-span-full">
+						<h2 className="text-base font-semibold leading-7 text-gray-900">포스터 및 대표사진</h2>
+						<div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+							<div className="text-center">
+								<Icon>
+									<RiImageAddLine size="30px" color="grey" />
+								</Icon>
+								<div className="mt-4 flex text-sm leading-6 text-gray-600">
+									<label
+										htmlFor="file-upload"
+										className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+									>
+										<p>사진 올리기</p>
+										<input id="file-upload" name="file-upload" type="file" className="sr-only" />
+									</label>
+								</div>
+								<p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+							</div>
+						</div>
+					</div>
+
+					<div className="col-span-full">
+						<h2 className="text-base font-semibold leading-7 text-gray-900">About</h2>
+						<div className="mt-2">
+							<textarea
+								id="about"
+								name="about"
+								rows={3}
+								className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								defaultValue={''}
+							/>
+						</div>
+						{/* <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
+					</div>
+				</div>
+			</div>
+			{/* 
 				<div className="border-b border-gray-900/10 pb-12 pt-12">
 					<h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
 					<p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
@@ -170,9 +165,9 @@ const ThemeCreate = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
-				<div className="border-b border-gray-900/10 pb-12 pt-12">
+			{/* <div className="border-b border-gray-900/10 pb-12 pt-12">
 					<h2 className="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
 					<p className="mt-1 text-sm leading-6 text-gray-600">
 						{`We'll always let you know about important changes, but you pick what else you want to hear about.`}
@@ -220,16 +215,15 @@ const ThemeCreate = () => {
 							</div>
 						</fieldset>
 					</div>
-				</div>
+				</div> */}
 
-				<div className="mt-6 flex items-center justify-end gap-x-6">
-					<button type="button" className="btn btn-ghost" onClick={() => _handleCancel()}>
-						취소
-					</button>
-					<button type="button" className="btn btn-primary" onClick={() => _handleSave()}>
-						저장
-					</button>
-				</div>
+			<div className="mt-6 flex items-center justify-end gap-x-6">
+				<button type="button" className="btn btn-ghost" onClick={() => _handleCancel()}>
+					취소
+				</button>
+				<button type="button" className="btn btn-primary" onClick={() => _handleSave()}>
+					저장
+				</button>
 			</div>
 		</Layout>
 	);

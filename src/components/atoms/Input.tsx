@@ -24,7 +24,7 @@ interface Props {
 
 function Input({ type, value, onChange, size = InputSize.Normal, label = '', placeholder = '', ...props }: Props) {
 	return (
-		<label className="form-control w-full max-w-xs">
+		<label className="form-control w-full">
 			{label && (
 				<div className="label">
 					<span className="label-text">{label}</span>
@@ -33,7 +33,7 @@ function Input({ type, value, onChange, size = InputSize.Normal, label = '', pla
 			<input
 				type={type}
 				placeholder={placeholder}
-				className={`input input-bordered input-${size} w-full max-w-xs`}
+				className={`input input-bordered input-${size} w-full`}
 				style={{ backgroundColor: 'rgb(245 245 245)' }}
 				value={value}
 				onChange={onChange}

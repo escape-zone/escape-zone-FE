@@ -5,6 +5,7 @@ export const urlReg = new RegExp(/^(https?:)\/\/(([^:/?#]*)(?::([0-9]+))?)([/]{0
 export const addCommaReg = new RegExp(/\B(?=(\d{3})+(?!\d))/g); // 3자리 단위로 comma
 export const dateReg = new RegExp(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/); // 날짜
 export const blankReg = new RegExp(/\s/g); // 공백
+export const emailSpecialTextReg = new RegExp(/[`~₩!#$%^&*()_|+\=?;:'",<>\-\{\}\[\]\\\/]/g); // 모든 특수문자
 export const specialTextReg = new RegExp(/[`~₩!@#$%^&*()_|+\=?;:'",.<>\-\{\}\[\]\\\/]/g); // 모든 특수문자
 export const specialTextAndSpaceReg = new RegExp(/[`~₩!@#$%^&*()_|+\=?;:'",.<>\-\{\}\[\]\\\/\s]/g); // 특수문자 + 공백
 export const specialTextForNumberReg = new RegExp(/[`~₩!@#$%^&*()_|+\=?;:'",<>\{\}\[\]\\\/\s]/g); // , - 제외한 특수문자

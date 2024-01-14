@@ -14,7 +14,7 @@ const Room = () => {
 
 	return (
 		<Layout isBottomNav={true}>
-			<div className="grid gap-4 grid-cols-1">
+			<div className="flex grid gap-4 grid-cols-1">
 				<div className="join gap-2">
 					<button className="btn btn-primary btn-wide text-xl" onClick={() => navigate('/create')}>
 						방 만들기

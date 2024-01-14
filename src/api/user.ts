@@ -38,7 +38,7 @@ export const naverRegister = async () => {
 	}
 };
 
-export const userRegister = async (body: { id: string; password: string; name: string; nickName: string }) => {
+export const userRegister = async (body: { email: string; password: string; name: string; nickName: string }) => {
 	const url = `${config.apiUrl}/users/register`;
 	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
 		.then((res) => res.json())
@@ -47,7 +47,7 @@ export const userRegister = async (body: { id: string; password: string; name: s
 		});
 };
 
-export const userLogin = async (body: { id: string; password: string }) => {
+export const userLogin = async (body: { email: string; password: string }) => {
 	const url = `${config.apiUrl}/users/login`;
 	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
 		.then((res) => res.json())
