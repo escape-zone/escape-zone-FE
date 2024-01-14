@@ -9,17 +9,12 @@ const MaskStar = (props: IMaskStar) => {
 	const { index, size = 'sm' } = props;
 
 	return (
-		<div className={`rating rating-${size} rating-half`}>
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled defaultChecked />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-1" disabled />
-			<input type="radio" name={`rating-${index}`} className="bg-orange-500 mask mask-star-2 mask-half-2" disabled />
+		<div className={`h-full rating rating-${size}`}>
+			<input type="radio" name="rating-8" className="mask mask-star-2 bg-orange-400" />
+			<input type="radio" name="rating-8" className="mask mask-star-2 bg-orange-400" checked />
+			<input type="radio" name="rating-8" className="mask mask-star-2 bg-orange-400" />
+			<input type="radio" name="rating-8" className="mask mask-star-2 bg-orange-400" />
+			<input type="radio" name="rating-8" className="mask mask-star-2 bg-orange-400" />
 		</div>
 	);
 };

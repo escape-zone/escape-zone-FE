@@ -142,44 +142,48 @@ const Chat = () => {
 	return (
 		<Layout isBottomNav={true}>
 			<div className="grid grid-cols-1 gap-4 w-[550px]">
-				{people.map((person) => (
-					<button key={person.roomId}>
-						<div
-							className="overflow-hidden relative mx-auto bg-white shadow-lg ring-1 ring-black/5 rounded-xl gap-6 dark:bg-slate-800 dark:highlight-white/5"
-							onClick={() => handleRoom(person)}
-						>
-							<img className="absolute -left-6 -top-2 w-28 h-28 rounded-full shadow-lg" src={person.imageUrl} alt="" width={100} height={100} />
-							<div className="py-5 pl-28 pr-5">
-								<div className="flex flex-col">
-									<div className="text-slate-900 font-medium text-sm sm:text-base truncate dark:text-slate-200">Andrew Alfred</div>
-									<div className="text-slate-500 font-medium text-sm sm:text-base leading-tight truncate dark:text-slate-400">
-										Assistant to the Traveling Secretary
-									</div>
-								</div>
-							</div>
-							{/* <div className="dropdown dropdown-end">
-								<button className="btn btn-square btn-ghost">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current">
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-										></path>
-									</svg>
-								</button>
-								<ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-									<li>
-										<a>Item 1</a>
-									</li>
-									<li>
-										<a>Item 2</a>
-									</li>
-								</ul>
-							</div> */}
-						</div>
-					</button>
-				))}
+				<div className="overflow-x-auto">
+					<table className="table">
+						<tbody>
+							{people.map((person, index) => (
+								<tr
+									key={index}
+									className="hover:hover:bg-orange-100 hover:cursor-pointer"
+									onClick={() => {
+										handleRoom(person);
+									}}
+								>
+									<td>
+										<div className="flex items-center gap-3">
+											<div className="avatar">
+												<div className="mask mask-squircle w-12 h-12">
+													<img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+												</div>
+											</div>
+										</div>
+									</td>
+									<th className="w-full">
+										<span className="text-base">방제목</span>
+										<br />
+										<span className="font-normal">
+											최근 내용이 촤라라락 촤라라락 촤라라락 촤라라락 촤라라락 촤라라락
+											촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락
+										</span>
+										<br />
+										<div className="pt-2">
+											<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag1</span>
+											<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag2</span>
+											<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag3</span>
+										</div>
+									</th>
+									<th>
+										<span className="font-normal">timestamp</span>
+									</th>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</Layout>
 	);

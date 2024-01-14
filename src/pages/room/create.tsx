@@ -73,9 +73,7 @@ const ThemeCreate = () => {
 
 					<div className="col-span-full">
 						<h2 className="text-base font-semibold leading-7 text-gray-900">난이도</h2>
-						<div className="mt-2">
-							<MaskStar index={1} size="lg" />
-						</div>
+						<MaskStar index={1} size="lg" />
 					</div>
 
 					<div className="col-span-full">

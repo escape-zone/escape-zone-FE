@@ -25,7 +25,7 @@ const Room = () => {
 				</div>
 
 				{TEST.map((product, index) => (
-					<div key={index} className="flex border p-3 rounded-xl">
+					<div key={index} className="flex border p-3 rounded-xl hover:bg-orange-100 hover:cursor-pointer">
 						<div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
 							<img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" />
 						</div>
