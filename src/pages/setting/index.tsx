@@ -70,7 +70,7 @@ const Setting = () => {
 			<Divider type={DividerType.Neutral} />
 
 			<div className="flex justify-center">
-				<div className="collapse collapse-arrow bg-gray-50" style={{ width: '92%' }}>
+				<div className="collapse collapse-arrow bg-gray-50">
 					<input
 						type="radio"
 						id="history"
@@ -91,7 +91,7 @@ const Setting = () => {
 			<div className="p-2"></div>
 
 			<div className="flex justify-center">
-				<div className="collapse collapse-arrow bg-gray-50" style={{ width: '92%' }}>
+				<div className="collapse collapse-arrow bg-gray-50">
 					<input
 						type="radio"
 						id="setting"
