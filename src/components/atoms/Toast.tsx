@@ -1,4 +1,4 @@
-import { TbInfoCircle, TbCircleCheck } from 'react-icons/tb';
+import { TbCircleCheck, TbAlertCircle, TbInfoTriangle } from 'react-icons/tb';
 
 import Icon from '@atoms/Icon';
 
@@ -12,23 +12,35 @@ const Toast = () => {
 	useTimeout(resetToast, 2000);
 
 	const findIcon = (type: string) => {
-		if (type === 'info')
+		if (type === 'info') {
 			return (
 				<Icon>
-					<TbInfoCircle size="20px" />
+					<TbAlertCircle size="20px" />
 				</Icon>
 			);
-		if (type === 'success')
+		}
+
+		if (type === 'success') {
 			return (
 				<Icon>
 					<TbCircleCheck size="20px" />
 				</Icon>
 			);
+		}
+
+		if (type === 'warning') {
+			return (
+				<Icon>
+					<TbInfoTriangle size="20px" />
+				</Icon>
+			);
+		}
 	};
 
 	const getBackgroundColor = (type: string) => {
 		if (type === 'info') return 'bg-amber-300';
 		if (type === 'success') return 'bg-lime-300';
+		if (type === 'warning') return 'bg-red-300';
 	};
 
 	return (

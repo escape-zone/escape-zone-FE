@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 export interface IToast {
 	isOpen: boolean;
-	type: 'info' | 'success';
+	type: 'info' | 'success' | 'warning';
 	text: string;
 }
 

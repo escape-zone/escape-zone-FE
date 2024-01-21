@@ -14,7 +14,7 @@ export const kakaoLogin = async () => {
 
 export const naverLogin = async () => {
 	try {
-		const url = ``;
+		//
 	} catch (error) {
 		console.error('NAVER LOGIN ERROR : ', error);
 	}
@@ -32,7 +32,7 @@ export const kakaoRegister = async () => {
 
 export const naverRegister = async () => {
 	try {
-		const url = ``;
+		//
 	} catch (error) {
 		console.error('NAVER REGISTER ERROR : ', error);
 	}

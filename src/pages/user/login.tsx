@@ -6,20 +6,21 @@ import Input, { InputType } from '@components/atoms/Input';
 import Button, { ButtonType } from '@components/atoms/Button';
 import Divider, { DividerType } from '@components/atoms/Divider';
 
+import useToast from '@hooks/useToast';
+import useUser from '@hooks/useUser';
+
 import { Player } from '@lottiefiles/react-lottie-player';
 
 import loginLottie from '@assets/lottie/login.json';
 
-import { userLogin } from '@api/user';
-
 import { emailSpecialTextReg, koreanReg } from '@constants/regex';
-
-import useToast from '@hooks/useToast';
 
 const Login = () => {
 	const navigate = useNavigate();
 
 	const { setToast } = useToast();
+
+	const { login } = useUser();
 
 	const [userInfo, setUserInfo] = useState({ email: '', password: '' });
 
@@ -37,8 +38,7 @@ const Login = () => {
 			return;
 		}
 
-		const response = await userLogin(userInfo);
-		console.log(response);
+		await login(userInfo);
 	};
 
 	const handleRegister = () => {

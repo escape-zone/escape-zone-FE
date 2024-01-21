@@ -6,7 +6,7 @@ interface IMaskStar {
 }
 
 const MaskStar = (props: IMaskStar) => {
-	const { index, size = 'sm' } = props;
+	const { size = 'sm' } = props;
 
 	return (
 		<div className={`h-full rating rating-${size}`}>
