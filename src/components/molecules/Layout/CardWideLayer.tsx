@@ -4,11 +4,11 @@ interface Props {
 	children: React.ReactNode;
 }
 
-function UserLayer({ children }: Props) {
+function CardWideLayer({ children }: Props) {
 	return (
 		<div className="hero min-h-screen bg-base-100">
 			<div className="hero-content flex-col">
-				<div className="card w-96 shadow-2xl bg-neutral">
+				<div className="card w-full shadow-2xl bg-white">
 					<div className="card-body">{children}</div>
 				</div>
 			</div>
@@ -16,4 +16,4 @@ function UserLayer({ children }: Props) {
 	);
 }
 
-export default UserLayer;
+export default CardWideLayer;

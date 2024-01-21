@@ -1,15 +1,12 @@
 import { TbInfoCircle, TbCircleCheck } from 'react-icons/tb';
 
-import { useRecoilValue, useResetRecoilState } from 'recoil';
-import { toastState } from '@recoil/toast';
-
 import Icon from '@atoms/Icon';
 
 import useTimeout from '@hooks/useTimeout';
+import useToast from '@hooks/useToast';
 
 const Toast = () => {
-	const toast = useRecoilValue(toastState);
-	const resetToast = useResetRecoilState(toastState);
+	const { toast, resetToast } = useToast();
 
 	// 알럿창 열린 후 2초뒤에 자동으로 닫히기
 	useTimeout(resetToast, 2000);

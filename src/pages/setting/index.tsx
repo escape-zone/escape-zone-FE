@@ -7,11 +7,15 @@ import { englishReg } from '@src/constants/regex';
 import Button, { ButtonType } from '@src/components/atoms/Button';
 import Stamp from '../stamp';
 
+import useToast from '@hooks/useToast';
+
 const Setting = () => {
+	const { setToast } = useToast();
+
 	const [isHistory, setIsHistory] = useState(false);
 	const [isOpenSetting, setIsOpenSetting] = useState(false);
 
-	const [userInfo, setUserInfo] = useState({ nickName: '', password: '' });
+	const [userInfo, setUserInfo] = useState({ nickname: '', password: '' });
 
 	const setting = document.getElementById('setting');
 	setting?.addEventListener('click', () => {
@@ -28,6 +32,22 @@ const Setting = () => {
 		const inputValue = name === 'name' ? value.replace(englishReg, '').trim() : value.trim();
 		setUserInfo((userInfo) => ({ ...userInfo, [name]: inputValue }));
 	}, []);
+
+	const handleChangeValue = async (type: 'nickname' | 'password') => {
+		if (type === 'nickname') {
+			if (!userInfo.nickname) {
+				setToast({ isOpen: true, type: 'info', text: '변경할 내역을 입력해주세요' });
+				return;
+			}
+		}
+
+		if (type === 'password') {
+			if (!userInfo.password) {
+				setToast({ isOpen: true, type: 'info', text: '변경할 내역을 입력해주세요' });
+				return;
+			}
+		}
+	};
 
 	return (
 		<Layout isBottomNav={true} title={'My Info'}>
@@ -108,10 +128,10 @@ const Setting = () => {
 									<tr>
 										<td className="w-1/5">닉네임</td>
 										<td className="w-2/5">
-											<Input type={InputType.Text} name="nickName" placeholder="닉네임" value={userInfo.nickName} onChange={handleUser} />
+											<Input type={InputType.Text} name="nickname" placeholder="닉네임" value={userInfo.nickname} onChange={handleUser} />
 										</td>
 										<td className="w-1/5">
-											<Button type={ButtonType.Primary} onClick={() => {}} text="변경" />
+											<Button type={ButtonType.Primary} onClick={() => handleChangeValue('nickname')} text="변경" />
 										</td>
 									</tr>
 									<tr>
@@ -120,7 +140,7 @@ const Setting = () => {
 											<Input type={InputType.Password} name="password" placeholder="비밀번호" value={userInfo.password} onChange={handleUser} />
 										</td>
 										<td className="w-1/5">
-											<Button type={ButtonType.Primary} onClick={() => {}} text="변경" />
+											<Button type={ButtonType.Primary} onClick={() => handleChangeValue('password')} text="변경" />
 										</td>
 									</tr>
 								</tbody>

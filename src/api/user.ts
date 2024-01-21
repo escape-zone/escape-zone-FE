@@ -38,20 +38,24 @@ export const naverRegister = async () => {
 	}
 };
 
-export const userRegister = async (body: { email: string; password: string; name: string; nickName: string }) => {
+const headers = {
+	'Content-Type': 'application/json'
+};
+
+export const userRegister = async (body: { email: string; password: string; name: string; nickname: string }) => {
 	const url = `${config.apiUrl}/users/register`;
-	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
+	return await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) })
 		.then((res) => res.json())
-		.catch((error) => {
+		.catch((error: any) => {
 			console.error(error);
 		});
 };
 
 export const userLogin = async (body: { email: string; password: string }) => {
 	const url = `${config.apiUrl}/users/login`;
-	return await fetch(url, { method: 'POST', body: JSON.stringify(body) })
+	return await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) })
 		.then((res) => res.json())
-		.catch((error) => {
+		.catch((error: any) => {
 			console.error(error);
 		});
 };

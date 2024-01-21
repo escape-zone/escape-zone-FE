@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Button, { ButtonType } from '@components/atoms/Button';
 
-import logoText from '@assets/images/logo_icon.png';
+import logoIcon from '@assets/images/logo_icon.png';
 
 interface Props {
 	title?: string;
@@ -19,7 +19,7 @@ const Header = ({ title }: Props) => {
 						<Button
 							text=""
 							type={ButtonType.Ghost}
-							icon={<img src={logoText} alt="" width={30} />}
+							icon={<img src={logoIcon} alt="" width={30} />}
 							onClick={() => {
 								navigate('/');
 							}}

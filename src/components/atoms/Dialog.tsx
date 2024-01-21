@@ -1,11 +1,9 @@
-import { useRecoilValue, useResetRecoilState } from 'recoil';
-import { dialogState } from '@recoil/dialog';
-
 import { TbInfoCircle, TbCircleCheck, TbAlertTriangle, TbCircleX } from 'react-icons/tb';
 
+import useDialog from '@hooks/useDialog';
+
 const Dialog = () => {
-	const dialog = useRecoilValue(dialogState);
-	const resetDialog = useResetRecoilState(dialogState);
+	const { dialog, resetDialog } = useDialog();
 
 	// 확인 버튼
 	const _handleConfirm = () => {
@@ -18,13 +16,14 @@ const Dialog = () => {
 		if (type === 'success') return <TbCircleCheck className="stroke-success" size="50px" />;
 		if (type === 'warning') return <TbAlertTriangle className="stroke-warning" size="50px" />;
 		if (type === 'error') return <TbCircleX className="stroke-error" size="50px" />;
+		else return null;
 	};
 
 	return (
 		<div className={`modal modal-middle modal-${dialog.isOpen ? 'open' : ''}`}>
 			<div className="modal-box bg-neutral">
 				<div className="flex justify-center" style={{ justifyContent: 'center' }}>
-					{_findIcon(dialog.type)}
+					{dialog.type && _findIcon(dialog.type)}
 				</div>
 				<br />
 				<h3 className="font-bold text-lg flex justify-center" style={{ justifyContent: 'center' }}>
@@ -36,6 +35,7 @@ const Dialog = () => {
 						{item}
 					</p>
 				))}
+				{dialog?.children}
 				<br />
 				<div className="modal-action flex" style={{ justifyContent: 'center' }}>
 					<label htmlFor="my-modal" className="btn btn-ghost" onClick={resetDialog}>

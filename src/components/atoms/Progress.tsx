@@ -1,11 +1,10 @@
-import { useRecoilValue } from 'recoil';
-import { progressState } from '@recoil/progress';
+import useProgress from '@hooks/useProgress';
 
 const Progress = () => {
-	const dialog = useRecoilValue(progressState);
+	const { progress } = useProgress();
 
 	return (
-		<div className={`modal modal-middle modal-${dialog.isOpen ? 'open' : ''}`}>
+		<div className={`modal modal-middle modal-${progress.isOpen ? 'open' : ''}`}>
 			<progress className="progress progress-primary w-56" style={{ background: '#fff' }}></progress>
 		</div>
 	);

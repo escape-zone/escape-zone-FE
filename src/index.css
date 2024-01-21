@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
+.Main {
 	background: white;
 	padding-top: 60px;
 	padding-bottom: 50px;
