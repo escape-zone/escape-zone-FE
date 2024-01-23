@@ -55,7 +55,7 @@ const Login = () => {
 				당신의 모험을 시작해보세요
 			</p>
 
-			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '250px', width: '250px' }} />
+			<Player autoplay speed={1} loop src={loginLottie} style={{ height: '250px', width: '250px', padding: '10px' }} />
 
 			<Input type={InputType.Text} placeholder="이메일" name="email" value={userInfo.email} onChange={handleUser} />
 			<Input type={InputType.Password} placeholder="비밀번호" name="password" value={userInfo.password} onChange={handleUser} />

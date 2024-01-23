@@ -44,7 +44,10 @@ function Register() {
 		}
 
 		const response = await userRegister(userInfo);
-		console.log(response);
+		if (response.success) {
+			setToast({ isOpen: true, type: 'success', text: response.message });
+			navigate('/login');
+		}
 	};
 
 	return (
@@ -52,9 +55,29 @@ function Register() {
 			<div className="flex justify-center">
 				<img src={logo} width={100} alt="logo" />
 			</div>
+
 			<Input type={InputType.Text} name="name" label="이름" placeholder="이름" value={userInfo.name} onChange={handleUser} />
-			<Input type={InputType.Text} name="nickname" label="닉네임" placeholder="닉네임" value={userInfo.nickname} onChange={handleUser} />
-			<Input type={InputType.Text} name="email" label="이메일" placeholder="이메일" value={userInfo.email} onChange={handleUser} />
+
+			<label className="form-control w-full ">
+				<div className="label">
+					<span className="label-text">닉네임</span>
+				</div>
+				<div className="join gap-2 w-full">
+					<Input type={InputType.Text} name="nickname" placeholder="닉네임" value={userInfo.nickname} onChange={handleUser} />
+					<Button text="중복확인" onClick={() => {}} type={ButtonType.Default} />
+				</div>
+			</label>
+
+			<label className="form-control w-full ">
+				<div className="label">
+					<span className="label-text">이메일</span>
+				</div>
+				<div className="join gap-2 w-full">
+					<Input type={InputType.Text} name="email" placeholder="이메일" value={userInfo.email} onChange={handleUser} />
+					<Button text="중복확인" onClick={() => {}} type={ButtonType.Default} />
+				</div>
+			</label>
+
 			<Input type={InputType.Password} name="password" label="비밀번호" placeholder="비밀번호" value={userInfo.password} onChange={handleUser} />
 
 			<div className="grid gap-4 grid-cols-1 pt-3">

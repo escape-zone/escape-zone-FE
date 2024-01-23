@@ -1,16 +1,20 @@
 import React, { useCallback, useState } from 'react';
 
 import Layout from '@components/molecules/Layout';
-import Divider, { DividerType } from '@src/components/atoms/Divider';
-import Input, { InputType } from '@src/components/atoms/Input';
-import { englishReg } from '@src/constants/regex';
-import Button, { ButtonType } from '@src/components/atoms/Button';
-import Stamp from '../stamp';
+import Divider, { DividerType } from '@components/atoms/Divider';
+import Input, { InputType } from '@components/atoms/Input';
+import Button, { ButtonSize, ButtonType } from '@components/atoms/Button';
+
+import Stamp from '@pages/stamp';
+
+import { englishReg } from '@constants/regex';
 
 import useToast from '@hooks/useToast';
+import useUser from '@hooks/useUser';
 
 const Setting = () => {
 	const { setToast } = useToast();
+	const { user, logout, changePassword, changeNickname } = useUser();
 
 	const [isHistory, setIsHistory] = useState(false);
 	const [isOpenSetting, setIsOpenSetting] = useState(false);
@@ -39,6 +43,9 @@ const Setting = () => {
 				setToast({ isOpen: true, type: 'info', text: '변경할 내역을 입력해주세요' });
 				return;
 			}
+
+			changeNickname(userInfo.nickname);
+			setUserInfo((userInfo) => ({ ...userInfo, [type]: '' }));
 		}
 
 		if (type === 'password') {
@@ -46,7 +53,14 @@ const Setting = () => {
 				setToast({ isOpen: true, type: 'info', text: '변경할 내역을 입력해주세요' });
 				return;
 			}
+
+			changePassword(userInfo.password);
+			setUserInfo((userInfo) => ({ ...userInfo, [type]: '' }));
 		}
+	};
+
+	const handleLogout = async () => {
+		await logout({ email: user.email });
 	};
 
 	return (
@@ -79,10 +93,9 @@ const Setting = () => {
 									</div>
 								</div>
 							</div>
-							<div className="stat-value">Hi, 지윤님</div>
-							<div className="stat-title"></div>
-							<div className="stat-desc text-secondary">Logout</div>
+							<div className="stat-value row-span-3">{`Hi, ${user.nickname}님`}</div>
 						</div>
+						<Button text="Logout" size={ButtonSize.Tiny} type={ButtonType.Ghost} onClick={handleLogout} />
 					</div>
 				</div>
 			</div>

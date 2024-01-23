@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import Home from '@pages/Home';
 import Chat from '@pages/chat';
@@ -7,7 +7,7 @@ import ChatRoom from '@src/pages/chat/room';
 import Setting from '@pages/setting';
 import Stamp from '@pages/stamp';
 import Room from '@pages/room';
-import RoomCreate from '@src/pages/room/create';
+import RoomCreate from '@pages/room/create';
 import Login from '@pages/user/login';
 import Register from '@pages/user/register';
 import PageNotFound from '@pages/PageNotFound';
@@ -16,20 +16,28 @@ import Toast from '@atoms/Toast';
 import Dialog from '@atoms/Dialog';
 import Progress from '@atoms/Progress';
 
-import { useRecoilValue } from 'recoil';
-import { IToast, toastState } from '@recoil/toast';
-import { IDialog, dialogState } from '@recoil/dialog';
-import { IProgress, progressState } from '@recoil/progress';
+import useUser from '@hooks/useUser';
+import useToast from '@hooks/useToast';
+import useDialog from '@hooks/useDialog';
+import useProgress from '@hooks/useProgress';
 
 function App() {
-	const toast = useRecoilValue<IToast>(toastState);
-	const dialog = useRecoilValue<IDialog>(dialogState);
-	const progress = useRecoilValue<IProgress>(progressState);
+	const { toast } = useToast();
+	const { dialog } = useDialog();
+	const { progress } = useProgress();
+
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const { accessToken, getUserInfo } = useUser();
 
 	useEffect(() => {
-		// 로그인 했는지 안했는지 확인
-		// alive();
-	}, []);
+		if (location.pathname !== '/login' && location.pathname !== '/register' && !accessToken) {
+			navigate('/login');
+		}
+
+		getUserInfo();
+	}, [location]);
 
 	return (
 		<>

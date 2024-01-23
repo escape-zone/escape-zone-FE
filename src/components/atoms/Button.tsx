@@ -37,7 +37,7 @@ interface Props {
 function Button({ type, text, size = ButtonSize.Normal, isOutline = false, isWide = false, icon = null, isLoading = false, disabled = false, onClick }: Props) {
 	return (
 		<button
-			className={classnames(`btn btn-${type} btn-${size}`, { 'btn-outline': isOutline, 'btn-wide': isWide })}
+			className={classnames(`btn  btn-${size} btn-${type}`, { 'btn-outline': isOutline, 'btn-wide': isWide })}
 			disabled={isLoading ? true : disabled}
 			onClick={onClick}
 		>

@@ -1,5 +1,4 @@
 import Layout from '@components/molecules/Layout';
-import React from 'react';
 
 function Home() {
 	return (
