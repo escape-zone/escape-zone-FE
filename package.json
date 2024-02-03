@@ -15,6 +15,7 @@
 		"classnames": "^2.5.1",
 		"daisyui": "^4.6.0",
 		"eslint": "^8.56.0",
+		"gh-pages": "^6.1.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.12.0",
@@ -33,7 +34,8 @@
 		"build": "craco build",
 		"test": "craco test",
 		"eject": "craco eject",
-		"homepage": "/your-repo-name"
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -62,5 +64,6 @@
 		"@types/websocket": "^1.0.10",
 		"craco-alias": "^3.0.1",
 		"tailwindcss": "^3.4.0"
-	}
+	},
+	"homepage": "https://escape-zone.github.io/escape-zone-FE/"
 }
