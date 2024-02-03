@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import CardLayout from '@components/molecules/Layout/CardLayer';
@@ -14,6 +14,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import loginLottie from '@assets/lottie/login.json';
 
 import { emailSpecialTextReg, koreanReg } from '@constants/regex';
+import { aliveCheck } from '@api/aliveCheck';
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -23,6 +24,10 @@ const Login = () => {
 	const { login } = useUser();
 
 	const [userInfo, setUserInfo] = useState({ email: '', password: '' });
+
+	useEffect(() => {
+		aliveCheck();
+	}, []);
 
 	const handleUser = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
