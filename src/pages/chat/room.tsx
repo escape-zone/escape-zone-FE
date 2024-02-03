@@ -4,6 +4,8 @@ import Layout from '@molecules/Layout';
 import Icon from '@atoms/Icon';
 
 import useDialog from '@hooks/useDialog';
+import useWebSockect from '@hooks/useWebSocket';
+import { useEffect } from 'react';
 
 const CHAT = [
 	{ id: 'me', text: 'It was said that you would, destroy the Sith, not join them.' },
@@ -18,6 +20,12 @@ const CHAT = [
 
 const ChatRoom = () => {
 	const { setDialog } = useDialog();
+
+	const { status, sendMessage } = useWebSockect();
+
+	useEffect(() => {
+		console.log(status);
+	}, []);
 
 	const readyUser = () => {
 		return (
@@ -95,7 +103,12 @@ const ChatRoom = () => {
 						</Icon>
 					</button>
 					<input type="text" placeholder="검색어를 입력해주세요" className="input input-bordered input w-full" />
-					<button className="btn btn-ghost">
+					<button
+						className="btn btn-ghost"
+						onClick={() => {
+							sendMessage('1231231');
+						}}
+					>
 						<Icon>
 							<TbSend size="20px" />
 						</Icon>

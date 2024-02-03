@@ -1,37 +1,57 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { RiImageAddLine } from 'react-icons/ri';
 
 import Layout from '@components/molecules/Layout';
-import MaskStar from '@components/atoms/MaskStar';
+import Input, { InputSize, InputType } from '@components/atoms/Input';
+
+import { RoomLocation, RoomTheme } from '@constants/enum';
 
 import { dialogState } from '@recoil/dialog';
 
-import Icon from '@atoms/Icon';
-import Input, { InputSize, InputType } from '@src/components/atoms/Input';
-
 const CATEGORY = [
-	{ index: 0, text: '전체' },
-	{ index: 1, text: '공포' },
-	{ index: 2, text: '19금' },
-	{ index: 3, text: '추리' },
-	{ index: 4, text: '액션' },
-	{ index: 5, text: '감성' },
-	{ index: 6, text: '모험' },
-	{ index: 7, text: 'SF/판타지' },
-	{ index: 8, text: '야외' }
+	{ index: -1, text: '선택하기' },
+	{ index: 0, text: '공포', value: RoomTheme.HORROR },
+	{ index: 1, text: '추리', value: RoomTheme.MYSTERY },
+	{ index: 2, text: '액션', value: RoomTheme.ACTION },
+	{ index: 3, text: '감성', value: RoomTheme.SENTIMENTAL },
+	{ index: 4, text: 'SF/판타지', value: RoomTheme.SF },
+	{ index: 5, text: '그 외', value: RoomTheme.OTHER }
+];
+
+const LOCATION = [
+	{ index: -1, text: '선택하기' },
+	{ index: 0, text: '전국', value: RoomLocation.NATIONWIDE },
+	{ index: 1, text: '서울', value: RoomLocation.SEOUL },
+	{ index: 2, text: '경기', value: RoomLocation.GYEONGGI },
+	{ index: 3, text: '인천', value: RoomLocation.INCHEON },
+	{ index: 4, text: '충청', value: RoomLocation.CHUNGCHEONG },
+	{ index: 5, text: '경상', value: RoomLocation.GYEONGSANG },
+	{ index: 6, text: '전라', value: RoomLocation.JEOLLA },
+	{ index: 7, text: '강원', value: RoomLocation.GANGWON },
+	{ index: 8, text: '제주', value: RoomLocation.JEJU },
+	{ index: 9, text: '강남', value: RoomLocation.GANGNAM },
+	{ index: 10, text: '홍대', value: RoomLocation.HONGDAE },
+	{ index: 11, text: '신촌', value: RoomLocation.SINCHON },
+	{ index: 12, text: '건대', value: RoomLocation.KONKUK },
+	{ index: 13, text: '대학로', value: RoomLocation.DAEHANGNO },
+	{ index: 14, text: '그 외', value: RoomLocation.OTHER }
 ];
 
 const ThemeCreate = () => {
 	const setDialog = useSetRecoilState(dialogState);
 
 	const [category, setCategory] = useState(CATEGORY[0]);
+	const [location, setLocation] = useState(LOCATION[0]);
 
 	const navigate = useNavigate();
 
 	const _handleCategory = (value: string) => {
 		setCategory(CATEGORY.find((item) => item.text === value) || CATEGORY[0]);
+	};
+
+	const _handleLocation = (value: string) => {
+		setLocation(LOCATION.find((item) => item.text === value) || LOCATION[0]);
 	};
 
 	const _handleSave = () => {};
@@ -48,15 +68,30 @@ const ThemeCreate = () => {
 		});
 	};
 
+	// /room
+	// POST
+	// title, password, play_date, thema, location, max_player
+
 	return (
 		<Layout isBottomNav={true} title={'방 만들기'}>
-			<div className="border-b border-gray-900/10 pb-12 w-[550px]">
+			<div className="border-b border-gray-900/10 pb-12 w-[550px] mx-2 min-h-fit">
 				<div className="grid grid-cols-1 gap-x-2 gap-y-8">
 					<div className="col-span-full">
 						<h2 className="text-base font-semibold leading-7 text-gray-900">카테고리</h2>
 						<div className="mt-2">
 							<select className="select select-bordered w-full" value={category.text} onChange={(e) => _handleCategory(e.target.value)}>
 								{CATEGORY.map((item) => (
+									<option key={item.index}>{item.text}</option>
+								))}
+							</select>
+						</div>
+					</div>
+
+					<div className="col-span-full">
+						<h2 className="text-base font-semibold leading-7 text-gray-900">지역</h2>
+						<div className="mt-2">
+							<select className="select select-bordered w-full" value={location.text} onChange={(e) => _handleLocation(e.target.value)}>
+								{LOCATION.map((item) => (
 									<option key={item.index}>{item.text}</option>
 								))}
 							</select>
@@ -70,12 +105,33 @@ const ThemeCreate = () => {
 						</div>
 					</div>
 
-					<div className="col-span-full">
-						<h2 className="text-base font-semibold leading-7 text-gray-900">난이도</h2>
-						<MaskStar index={1} size="lg" />
+					<div>
+						<h2 className="text-base font-semibold leading-7 text-gray-900">비밀번호</h2>
+						<div className="mt-2">
+							<Input name="password" value="" type={InputType.Text} size={InputSize.Large} onChange={() => {}} />
+						</div>
 					</div>
 
-					<div className="col-span-full">
+					<div>
+						<h2 className="text-base font-semibold leading-7 text-gray-900">날짜</h2>
+						<div className="mt-2">
+							<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+						</div>
+					</div>
+
+					<div>
+						<h2 className="text-base font-semibold leading-7 text-gray-900">경험자</h2>
+						<div className="mt-2">
+							<input type="number" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+						</div>
+					</div>
+
+					{/* <div className="col-span-full">
+						<h2 className="text-base font-semibold leading-7 text-gray-900">난이도</h2>
+						<MaskStar index={1} size="lg" />
+					</div> */}
+
+					{/* <div className="col-span-full">
 						<h2 className="text-base font-semibold leading-7 text-gray-900">포스터 및 대표사진</h2>
 						<div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
 							<div className="text-center">
@@ -94,9 +150,9 @@ const ThemeCreate = () => {
 								<p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
 							</div>
 						</div>
-					</div>
+					</div> */}
 
-					<div className="col-span-full">
+					{/* <div className="col-span-full">
 						<h2 className="text-base font-semibold leading-7 text-gray-900">About</h2>
 						<div className="mt-2">
 							<textarea
@@ -107,8 +163,7 @@ const ThemeCreate = () => {
 								defaultValue={''}
 							/>
 						</div>
-						{/* <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
-					</div>
+					</div> */}
 				</div>
 			</div>
 			{/* 
@@ -219,7 +274,7 @@ const ThemeCreate = () => {
 					취소
 				</button>
 				<button type="button" className="btn btn-primary" onClick={() => _handleSave()}>
-					저장
+					생성
 				</button>
 			</div>
 		</Layout>

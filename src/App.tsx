@@ -36,7 +36,7 @@ function App() {
 			navigate('/login');
 		}
 
-		getUserInfo();
+		// getUserInfo();
 	}, [location]);
 
 	return (
