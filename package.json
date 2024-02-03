@@ -33,9 +33,7 @@
 		"start": "craco start",
 		"build": "craco build",
 		"test": "craco test",
-		"eject": "craco eject",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"eject": "craco eject"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -64,6 +62,5 @@
 		"@types/websocket": "^1.0.10",
 		"craco-alias": "^3.0.1",
 		"tailwindcss": "^3.4.0"
-	},
-	"homepage": "https://escape-zone.github.io/escape-zone-FE/"
+	}
 }
