@@ -30,7 +30,7 @@
 		"ws": "^8.16.0"
 	},
 	"scripts": {
-		"start": "craco start",
+		"start": "craco start --env HTTPS=false",
 		"build": "craco build",
 		"test": "craco test",
 		"eject": "craco eject"
