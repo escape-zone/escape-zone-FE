@@ -41,7 +41,7 @@ function App() {
 
 	return (
 		<>
-			<BrowserRouter basename="/escape-zone-FE">
+			<BrowserRouter basename={process.env.PUBLIC_URL}>
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 					<Route path="/room" element={<Room />}></Route>
