@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/escape-zone-FE/static/css/main.e2015c36.css",
+    "main.js": "/escape-zone-FE/static/js/main.08c83cef.js",
+    "static/media/logo_icon.png": "/escape-zone-FE/static/media/logo_icon.a16626c760bb8f2a8bc8.png",
+    "index.html": "/escape-zone-FE/index.html",
+    "main.e2015c36.css.map": "/escape-zone-FE/static/css/main.e2015c36.css.map",
+    "main.08c83cef.js.map": "/escape-zone-FE/static/js/main.08c83cef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e2015c36.css",
+    "static/js/main.08c83cef.js"
+  ]
+}
