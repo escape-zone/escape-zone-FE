@@ -8,7 +8,7 @@ const config = {
 	fontFamily: `'Roboto', sans-serif`,
 	borderRadius: 12,
 	apiUrl: server,
-	socketServer: `wss://${server}`
+	socketServer: `ws://35.216.75.221:8080`
 };
 
 export default config;

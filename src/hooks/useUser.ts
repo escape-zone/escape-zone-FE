@@ -1,4 +1,4 @@
-import { changeInfo, userInfo, userLogin, userLogout } from '@api/user';
+import { userChange, userInfo, userLogin, userLogout } from '@api/user';
 
 import useToast from '@hooks/useToast';
 import { userState } from '@src/recoil/user';
@@ -16,8 +16,8 @@ const useUser = () => {
 
 	const accessToken = localStorage.getItem('accessToken');
 
-	const setAccessToken = ({ accessToken }: { accessToken: string }) => {
-		if (accessToken) localStorage.setItem('accessToken', accessToken);
+	const setAccessToken = ({ access_token }: { access_token: string }) => {
+		if (access_token) localStorage.setItem('accessToken', access_token);
 	};
 
 	const login = async (body: { email: string; password: string }) => {
@@ -25,6 +25,7 @@ const useUser = () => {
 		if (response?.success) {
 			setToast({ isOpen: true, type: 'success', text: '로그인 완료 되었습니다' });
 			setAccessToken(response.data);
+			await getUserInfo();
 			navigate('/');
 		} else {
 			setToast({ isOpen: true, type: 'warning', text: '로그인 실패 되었습니다' });
@@ -54,7 +55,7 @@ const useUser = () => {
 
 	const changePassword = async (password: string) => {
 		if (accessToken) {
-			const response = await changeInfo(accessToken, { email: user.email, password });
+			const response = await userChange(accessToken, { email: user.email, password });
 			if (response.success) {
 				setToast({ isOpen: true, type: 'success', text: '비밀번호 변경이 완료 되었습니다' });
 				getUserInfo();
@@ -64,7 +65,7 @@ const useUser = () => {
 
 	const changeNickname = async (nickname: string) => {
 		if (accessToken) {
-			const response = await changeInfo(accessToken, { email: user.email, nickname });
+			const response = await userChange(accessToken, { email: user.email, nickname });
 			if (response.success) {
 				setToast({ isOpen: true, type: 'success', text: '닉네임 변경이 완료 되었습니다' });
 				getUserInfo();

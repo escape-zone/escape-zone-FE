@@ -5,7 +5,6 @@ import Icon from '@atoms/Icon';
 
 import useDialog from '@hooks/useDialog';
 import useWebSockect from '@hooks/useWebSocket';
-import { useEffect } from 'react';
 
 const CHAT = [
 	{ id: 'me', text: 'It was said that you would, destroy the Sith, not join them.' },
@@ -21,11 +20,7 @@ const CHAT = [
 const ChatRoom = () => {
 	const { setDialog } = useDialog();
 
-	const { status, sendMessage } = useWebSockect();
-
-	useEffect(() => {
-		console.log(status);
-	}, []);
+	const { chatList, sendMessage } = useWebSockect('1');
 
 	const readyUser = () => {
 		return (
@@ -51,7 +46,7 @@ const ChatRoom = () => {
 					<div className="bg-primary text-neutral-content rounded-full w-24">
 						<span className="text-3xl">D</span>
 					</div>
-				</div>{' '}
+				</div>
 				<div className="flex avatar placeholder justify-center">
 					<div className="bg-primary text-neutral-content rounded-full w-24">
 						<span className="text-3xl">D</span>

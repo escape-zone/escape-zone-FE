@@ -63,6 +63,8 @@ const Setting = () => {
 		await logout({ email: user.email });
 	};
 
+	console.log(user);
+
 	return (
 		<Layout isBottomNav={true} title={'My Info'}>
 			<div className="flex justify-center">

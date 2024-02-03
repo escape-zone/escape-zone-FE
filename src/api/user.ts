@@ -64,7 +64,7 @@ export const userInfo = async (accessToken: string) => {
 		});
 };
 
-export const changeInfo = async (accessToken: string, body: { email: string; password?: string; nickname?: string }) => {
+export const userChange = async (accessToken: string, body: { email: string; password?: string; nickname?: string }) => {
 	const url = `${config.apiUrl}/users/change`;
 	return await fetch(url, {
 		method: 'POST',

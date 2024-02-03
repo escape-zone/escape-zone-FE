@@ -15,108 +15,50 @@ export enum SocketStatus {
 	Error = 'Error'
 }
 
-const useWebSockect = () => {
+const useWebSockect = (roomId: string) => {
 	const { accessToken } = useUser();
 
-	const [message, setMessage] = useState<string[]>([]);
-	const [status, setStatus] = useState(SocketStatus.NotConnected);
+	const [chatList, setChatList] = useState<string[]>([]);
 
-	const webSocket = useRef<WebSocket | null>(null);
 	const client = useRef<StompJs.Client | any>(null);
-
-	// useEffect(() => {
-	// 	console.log(accessToken);
-	// 	client.current = new StompJs.Client({
-	// 		brokerURL: SOCKET_URL,
-	// 		connectHeaders: { Authorization: `Bearer ${accessToken}` },
-	// 		debug: (str) => {
-	// 			console.log('debug', str);
-	// 		}
-	// 		// reconnectDelay: 5000, // 자동 재 연결
-	// 		// heartbeatIncoming: 4000,
-	// 		// heartbeatOutgoing: 4000
-	// 	});
-
-	// 	// 구독
-	// 	client.current.onConnect = () => {
-	// 		console.log('onConnect');
-	// 		// clientdata.subscribe('/sub/channels/' + chatroomId, callback);
-	// 	};
-
-	// 	client.current.onStompError = function (frame: StompJs.IFrame) {
-	// 		console.log('Broker reported error: ' + frame.headers['message']);
-	// 		console.log('Additional details: ' + frame.body);
-	// 	};
-
-	// 	client.current.activate();
-	// 	// const callback = function (message) {
-	// 	// 	if (message.body) {
-	// 	// 		let msg = JSON.parse(message.body);
-	// 	// 		setChatList((chats) => [...chats, msg]);
-	// 	// 	}
-	// 	// };
-	// }, []);
-
-	// const socket = new SockJS(SOCKET_URL);
-
-	// useEffect(() => {
-	// 	const stompClient = Stomp.over(socket);
-	// 	stompClient.connect({}, (frame) => {
-	// 		console.log('Connected: ' + frame);
-	// 	});
-
-	// 	stompClient.subscribe('/topic/some-topic', (message) => {
-	// 		console.log('Received message:', message.body);
-	// 	});
-
-	// 	stompClient.send('/app/send-message', {}, JSON.stringify({ content: 'Hello, server!' }));
-	// }, []);
-
-	// useEffect(() => {
-	// 	const client = new W3CWebSocket(SOCKET_URL, undefined, undefined, headers);
-
-	// 	client.onopen = () => {
-	// 		console.log('WebSocket Client Connected');
-	// 	};
-
-	// 	client.onmessage = (message) => {
-	// 		console.log('Received:', message.data);
-	// 	};
-
-	// 	client.onclose = () => {
-	// 		console.log('WebSocket Client Closed');
-	// 	};
-
-	// 	// Clean up the WebSocket connection when the component unmounts
-	// 	return () => {
-	// 		client.close();
-	// 	};
-	// }, []);
 
 	useEffect(() => {
 		if (!accessToken) return;
 
-		webSocket.current = new WebSocket(SOCKET_URL);
+		client.current = new StompJs.Client({
+			brokerURL: SOCKET_URL,
+			connectHeaders: { Authorization: accessToken }
+			// debug: (data) => {
+			// 	console.log('debug', data);
+			// }
+		});
 
-		webSocket.current.onopen = () => {
-			console.log('WebSocket 연결!');
-			setStatus(SocketStatus.Connected);
-			webSocket.current?.send(JSON.stringify({ type: 'authentication', token: accessToken }));
+		client.current.onConnect = () => {
+			client.current.publish({
+				destination: `/pub/chat`,
+				body: JSON.stringify({
+					message_type: 'ENTER',
+					sender_id: 1,
+					chat_room_id: '1',
+					message: ''
+				})
+			});
+
+			// 구독
+			client.current.subscribe(`/sub/chat/${roomId}`, (message: any) => {
+				if (message.body) {
+					const msg = JSON.parse(message.body);
+					setChatList((chatList) => [...chatList, msg]);
+				}
+			});
 		};
 
-		webSocket.current.onclose = (error) => {
-			setStatus(SocketStatus.Closed);
-			console.log('onclose', error);
+		client.current.onStompError = (frame: StompJs.IFrame) => {
+			console.log('Broker reported error: ' + frame.headers['message']);
+			console.log('Additional details: ' + frame.body);
 		};
 
-		webSocket.current.onerror = (error) => {
-			setStatus(SocketStatus.Error);
-			console.log('onerror', error);
-		};
-
-		webSocket.current.onmessage = (event: MessageEvent) => {
-			setMessage((prev) => [...prev, event.data]);
-		};
+		client.current.activate();
 
 		return () => {
 			closeServer();
@@ -124,16 +66,32 @@ const useWebSockect = () => {
 	}, []);
 
 	const sendMessage = (message: string) => {
-		if (webSocket.current?.readyState === WebSocket.OPEN) {
-			webSocket.current?.send(message);
-		}
+		client.current.publish({
+			destination: `/pub/chat`,
+			body: JSON.stringify({
+				message_type: 'TALK',
+				sender_id: 1,
+				chat_room_id: '1',
+				message: message
+			})
+		});
 	};
 
 	const closeServer = () => {
-		webSocket.current?.close();
+		client.current.publish({
+			destination: `/pub/chat`,
+			body: JSON.stringify({
+				message_type: 'EXIT',
+				sender_id: 1,
+				chat_room_id: '1',
+				message: ''
+			})
+		});
+
+		client.current.deactivate();
 	};
 
-	return { status, message, sendMessage };
+	return { chatList, sendMessage, closeServer };
 };
 
 export default useWebSockect;

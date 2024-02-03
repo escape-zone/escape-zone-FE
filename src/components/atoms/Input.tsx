@@ -2,7 +2,9 @@ import React from 'react';
 
 export enum InputType {
 	Password = 'password',
-	Text = 'text'
+	Text = 'text',
+	Number = 'number',
+	Date = 'date'
 }
 
 export enum InputSize {
@@ -15,7 +17,7 @@ export enum InputSize {
 interface Props {
 	type: InputType;
 	size?: InputSize;
-	value: string;
+	value: string | number;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	label?: string;
 	placeholder?: string;

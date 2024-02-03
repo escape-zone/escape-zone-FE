@@ -36,25 +36,24 @@ function App() {
 			navigate('/login');
 		}
 
-		// getUserInfo();
+		getUserInfo();
 	}, [location]);
 
 	return (
 		<>
-			<BrowserRouter basename="/escape-zone-FE/">
-				<Routes>
-					<Route path="/" element={<Home />}></Route>
-					<Route path="/room" element={<Room />}></Route>
-					<Route path="/create" element={<RoomCreate />}></Route>
-					<Route path="/chat" element={<Chat />}></Route>
-					<Route path="/chat/:id" element={<ChatRoom />}></Route>
-					<Route path="/setting" element={<Setting />}></Route>
-					<Route path="/stamp" element={<Stamp />}></Route>
-					<Route path="/login" element={<Login />}></Route>
-					<Route path="/register" element={<Register />}></Route>
-					<Route path="*" element={<PageNotFound />}></Route>
-				</Routes>
-			</BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Home />}></Route>
+				<Route path="/room" element={<Room />}></Route>
+				<Route path="/create" element={<RoomCreate />}></Route>
+				<Route path="/chat" element={<Chat />}></Route>
+				<Route path="/chat/:id" element={<ChatRoom />}></Route>
+				<Route path="/setting" element={<Setting />}></Route>
+				<Route path="/stamp" element={<Stamp />}></Route>
+				<Route path="/login" element={<Login />}></Route>
+				<Route path="/register" element={<Register />}></Route>
+				<Route path="*" element={<PageNotFound />}></Route>
+			</Routes>
+
 			{toast.isOpen && <Toast />}
 			{dialog.isOpen && <Dialog />}
 			{progress.isOpen && <Progress />}
