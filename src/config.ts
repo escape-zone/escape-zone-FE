@@ -6,9 +6,9 @@ const config = {
 	defaultPath: '/',
 	fontFamily: `'Roboto', sans-serif`,
 	borderRadius: 12,
-	apiUrl: `http://${server}`,
-	baseUrl: 'http://local.escapezone.com:3000',
-	socketServer: `ws://${server}`
+	apiUrl: `https://${server}`,
+	baseUrl: 'https://local.escapezone.com:3000',
+	socketServer: `wss://${server}`
 };
 
 export default config;
