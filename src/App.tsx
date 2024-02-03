@@ -41,7 +41,7 @@ function App() {
 
 	return (
 		<>
-			<BrowserRouter basename={process.env.PUBLIC_URL}>
+			<BrowserRouter basename="/escape-zone-FE/">
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 					<Route path="/room" element={<Room />}></Route>
@@ -55,7 +55,6 @@ function App() {
 					<Route path="*" element={<PageNotFound />}></Route>
 				</Routes>
 			</BrowserRouter>
-
 			{toast.isOpen && <Toast />}
 			{dialog.isOpen && <Dialog />}
 			{progress.isOpen && <Progress />}
