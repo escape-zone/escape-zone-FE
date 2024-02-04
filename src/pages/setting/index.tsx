@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
-import Layout from '@components/molecules/Layout';
+import Layout from '@src/components/molecules/Layout';
 import Divider, { DividerType } from '@components/atoms/Divider';
 import Input, { InputType } from '@components/atoms/Input';
 import Button, { ButtonSize, ButtonType } from '@components/atoms/Button';
@@ -66,9 +66,9 @@ const Setting = () => {
 	console.log(user);
 
 	return (
-		<Layout isBottomNav={true} title={'My Info'}>
-			<div className="flex justify-center">
-				<div className="stats shadow bg-gray-50">
+		<Layout>
+			<div className="text-center ">
+				<div className="stats shadow bg-gray-50 w-full">
 					<div className="stat">
 						<div className="stat place-items-center">
 							<div className="stat-title">성공률</div>

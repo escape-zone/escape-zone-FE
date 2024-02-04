@@ -1,10 +1,15 @@
+import { useLocation } from 'react-router-dom';
+
 import { TbSend, TbSwords } from 'react-icons/tb';
 
-import Layout from '@molecules/Layout';
+import Layout from '@components/molecules/Layout';
+
 import Icon from '@atoms/Icon';
 
 import useDialog from '@hooks/useDialog';
 import useWebSockect from '@hooks/useWebSocket';
+import useUser from '@src/hooks/useUser';
+import { useEffect } from 'react';
 
 const CHAT = [
 	{ id: 'me', text: 'It was said that you would, destroy the Sith, not join them.' },
@@ -20,7 +25,16 @@ const CHAT = [
 const ChatRoom = () => {
 	const { setDialog } = useDialog();
 
-	const { chatList, sendMessage } = useWebSockect('1');
+	const location = useLocation();
+	const { getUserInfo } = useUser();
+
+	const { chatList, sendMessage } = useWebSockect(location.pathname.split('/')[2]);
+
+	useEffect(() => {
+		getUserInfo();
+	}, []);
+
+	console.log(chatList);
 
 	const readyUser = () => {
 		return (
@@ -72,7 +86,7 @@ const ChatRoom = () => {
 	};
 
 	return (
-		<Layout isBottomNav={false} title={'채팅방 방제목'}>
+		<Layout>
 			{CHAT.map((item, index) =>
 				item.id === 'me' ? (
 					<div key={index} className="chat chat-end p-3">
@@ -80,12 +94,9 @@ const ChatRoom = () => {
 					</div>
 				) : (
 					<div key={index} className="chat chat-start p-3">
-						<div className="chat-image avatar">
-							<div className="w-10 rounded-full">
-								<img width={500} height={500} src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Album" />
-							</div>
+						<div className="chat chat-start">
+							<div className="chat-bubble chat-bubble-secondary">{item.text}</div>
 						</div>
-						<div className="chat-bubble chat-bubble-secondary">{item.text}</div>
 					</div>
 				)
 			)}

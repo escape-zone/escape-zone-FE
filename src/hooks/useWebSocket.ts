@@ -16,7 +16,7 @@ export enum SocketStatus {
 }
 
 const useWebSockect = (roomId: string) => {
-	const { accessToken } = useUser();
+	const { accessToken, user } = useUser();
 
 	const [chatList, setChatList] = useState<string[]>([]);
 
@@ -28,9 +28,6 @@ const useWebSockect = (roomId: string) => {
 		client.current = new StompJs.Client({
 			brokerURL: SOCKET_URL,
 			connectHeaders: { Authorization: accessToken }
-			// debug: (data) => {
-			// 	console.log('debug', data);
-			// }
 		});
 
 		client.current.onConnect = () => {
@@ -38,8 +35,8 @@ const useWebSockect = (roomId: string) => {
 				destination: `/pub/chat`,
 				body: JSON.stringify({
 					message_type: 'ENTER',
-					sender_id: 1,
-					chat_room_id: '1',
+					sender_id: user.nickname,
+					chat_room_id: roomId,
 					message: ''
 				})
 			});

@@ -1,5 +1,6 @@
-import Layout from '@src/components/molecules/Layout';
 import { useNavigate } from 'react-router-dom';
+
+import Layout from '@components/molecules/Layout';
 
 interface IPeople {
 	name: string;
@@ -140,49 +141,51 @@ const Chat = () => {
 	};
 
 	return (
-		<Layout isBottomNav={true} title={'채팅방 목록'}>
-			<div className="grid grid-cols-1 gap-4 w-[550px]">
-				<div className="overflow-x-auto">
-					<table className="table">
-						<tbody>
-							{people.map((person, index) => (
-								<tr
-									key={index}
-									className="hover:hover:bg-primary-content hover:cursor-pointer"
-									onClick={() => {
-										handleRoom(person);
-									}}
-								>
-									<td>
-										<div className="flex items-center gap-3">
-											<div className="avatar">
-												<div className="mask mask-squircle w-12 h-12">
-													<img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+		<Layout>
+			<div className="flex justify-center">
+				<div className="grid grid-cols-1 gap-4 w-[550px]">
+					<div className="overflow-x-auto">
+						<table className="table">
+							<tbody>
+								{people.map((person, index) => (
+									<tr
+										key={index}
+										className="hover:hover:bg-primary-content hover:cursor-pointer"
+										onClick={() => {
+											handleRoom(person);
+										}}
+									>
+										<td>
+											<div className="flex items-center gap-3">
+												<div className="avatar">
+													<div className="mask mask-squircle w-12 h-12">
+														<img src="https://daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+													</div>
 												</div>
 											</div>
-										</div>
-									</td>
-									<th className="w-full">
-										<span className="text-base">방제목</span>
-										<br />
-										<span className="font-normal">
-											최근 내용이 촤라라락 촤라라락 촤라라락 촤라라락 촤라라락 촤라라락
-											촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락
-										</span>
-										<br />
-										<div className="pt-2">
-											<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag1</span>
-											<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag2</span>
-											<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag3</span>
-										</div>
-									</th>
-									<th>
-										<span className="font-normal">timestamp</span>
-									</th>
-								</tr>
-							))}
-						</tbody>
-					</table>
+										</td>
+										<th className="w-full">
+											<span className="text-base">방제목</span>
+											<br />
+											<span className="font-normal">
+												최근 내용이 촤라라락 촤라라락 촤라라락 촤라라락 촤라라락 촤라라락
+												촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락촤라라락
+											</span>
+											<br />
+											<div className="pt-2">
+												<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag1</span>
+												<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag2</span>
+												<span className="badge badge-accent badge-outline badge-sm font-normal mr-1">hashtag3</span>
+											</div>
+										</th>
+										<th>
+											<span className="font-normal">timestamp</span>
+										</th>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</Layout>

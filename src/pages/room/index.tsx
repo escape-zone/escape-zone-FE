@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import MaskStar from '@components/atoms/MaskStar';
-import Layout from '@components/molecules/Layout';
+import Layout from '@src/components/molecules/Layout';
 
 import { TbSearch } from 'react-icons/tb';
 import Button, { ButtonType } from '@src/components/atoms/Button';
@@ -12,10 +12,10 @@ const Room = () => {
 	const navigate = useNavigate();
 
 	return (
-		<Layout isBottomNav={true} title={'방 목록'}>
+		<Layout>
 			<div className="flex grid gap-4 grid-cols-1">
 				<div className="join gap-2">
-					<button className="btn btn-primary btn-wide text-xl" onClick={() => navigate('/create')}>
+					<button className="btn btn-primary btn-wide text-xl" onClick={() => navigate('/room/create')}>
 						방 만들기
 					</button>
 					<div className="pr-2"></div>

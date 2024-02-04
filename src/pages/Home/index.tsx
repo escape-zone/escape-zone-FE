@@ -1,8 +1,8 @@
-import Layout from '@components/molecules/Layout';
+import Layout from '@src/components/molecules/Layout';
 
 function Home() {
 	return (
-		<Layout isBottomNav={true}>
+		<Layout>
 			<ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
 				<li className="grid-cols-none">
 					<div className="timeline-middle">

@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
-import Layout from '@components/molecules/Layout';
+import Layout from '@src/components/molecules/Layout';
 import Input, { InputSize, InputType } from '@components/atoms/Input';
 
 import { RoomLocation, RoomTheme } from '@constants/enum';
@@ -86,6 +86,9 @@ const ThemeCreate = () => {
 		});
 
 		console.log(result);
+		if (result.success) {
+			navigate(`/chat/${result.data.room_id}`);
+		}
 	};
 
 	const handleCancel = () => {
@@ -101,39 +104,40 @@ const ThemeCreate = () => {
 	};
 
 	return (
-		<Layout isBottomNav={true} title={'방 만들기'}>
-			<div className="border-b border-gray-900/10 pb-12 w-[550px] mx-2 min-h-fit">
-				<div className="grid grid-cols-1 gap-x-2 gap-y-8">
-					<div className="col-span-full">
-						<h2 className="text-base font-semibold leading-7 text-gray-900">카테고리</h2>
-						<div className="mt-2">
-							<select className="select select-bordered w-full" value={createInfo.thema.text} onChange={(e) => setThema(e.target.value)}>
-								{CATEGORY.map((item) => (
-									<option key={item.index}>{item.text}</option>
-								))}
-							</select>
+		<Layout>
+			<div className="flex justify-center">
+				<div className="w-[550px] min-h-fit">
+					<div className="grid grid-cols-1 gap-x-2 gap-y-8">
+						<div className="col-span-full">
+							<h2 className="text-base font-semibold leading-7 text-gray-900">카테고리</h2>
+							<div className="mt-2">
+								<select className="select select-bordered w-full" value={createInfo.thema.text} onChange={(e) => setThema(e.target.value)}>
+									{CATEGORY.map((item) => (
+										<option key={item.index}>{item.text}</option>
+									))}
+								</select>
+							</div>
 						</div>
-					</div>
 
-					<div className="col-span-full">
-						<h2 className="text-base font-semibold leading-7 text-gray-900">지역</h2>
-						<div className="mt-2">
-							<select className="select select-bordered w-full" value={createInfo.location.text} onChange={(e) => setLocation(e.target.value)}>
-								{LOCATION.map((item) => (
-									<option key={item.index}>{item.text}</option>
-								))}
-							</select>
+						<div className="col-span-full">
+							<h2 className="text-base font-semibold leading-7 text-gray-900">지역</h2>
+							<div className="mt-2">
+								<select className="select select-bordered w-full" value={createInfo.location.text} onChange={(e) => setLocation(e.target.value)}>
+									{LOCATION.map((item) => (
+										<option key={item.index}>{item.text}</option>
+									))}
+								</select>
+							</div>
 						</div>
-					</div>
 
-					<Input type={InputType.Text} size={InputSize.Large} value={createInfo.title} label="제목" name="title" onChange={handleCreate} />
-					<Input type={InputType.Password} size={InputSize.Large} value={createInfo.password} label="비밀번호" name="password" onChange={handleCreate} />
-					<Input type={InputType.Date} size={InputSize.Large} value={createInfo.play_date} label="날짜" name="play_date" onChange={handleCreate} />
-					<Input type={InputType.Number} size={InputSize.Large} value={createInfo.max_player} label="최대 참여자" name="max_player" onChange={handleCreate} />
+						<Input type={InputType.Text} size={InputSize.Large} value={createInfo.title} label="제목" name="title" onChange={handleCreate} />
+						<Input type={InputType.Password} size={InputSize.Large} value={createInfo.password} label="비밀번호" name="password" onChange={handleCreate} />
+						<Input type={InputType.Date} size={InputSize.Large} value={createInfo.play_date} label="날짜" name="play_date" onChange={handleCreate} />
+						<Input type={InputType.Number} size={InputSize.Large} value={createInfo.max_player} label="최대 참여자" name="max_player" onChange={handleCreate} />
+					</div>
 				</div>
 			</div>
-
-			<div className="mt-6 flex items-center justify-end gap-x-6">
+			<div className="mt-6 flex items-center justify-center gap-x-6">
 				<button type="button" className="btn btn-ghost" onClick={() => handleCancel()}>
 					취소
 				</button>
