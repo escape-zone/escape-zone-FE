@@ -22,7 +22,23 @@ export const roomCreate = async (
 	})
 		.then((res) => res.json())
 		.catch((error) => {
-			console.error('ALVIE CHECK ERROR : ', error);
+			console.error('ROOM CREATE ERROR : ', error);
+			return error;
+		});
+};
+
+export const roomList = async (accessToken: string) => {
+	const url = `${config.apiUrl}/room`;
+	return await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${accessToken}`
+		}
+	})
+		.then((res) => res.json())
+		.catch((error) => {
+			console.error('ROOM LIST ERROR : ', error);
 			return error;
 		});
 };

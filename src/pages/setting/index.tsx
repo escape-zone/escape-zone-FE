@@ -86,7 +86,7 @@ const Setting = () => {
 
 					<div className="stat">
 						<div className="stat place-items-center">
-							<div className="stat-figure text-secondary">
+							{/* <div className="stat-figure text-secondary">
 								<div className="flex ml-4">
 									<div className="avatar placeholder">
 										<div className="bg-primary text-neutral-content rounded-full w-16">
@@ -94,7 +94,7 @@ const Setting = () => {
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> */}
 							<div className="stat-value row-span-3">{`Hi, ${user.nickname}님`}</div>
 						</div>
 						<Button text="Logout" size={ButtonSize.Tiny} type={ButtonType.Ghost} onClick={handleLogout} />

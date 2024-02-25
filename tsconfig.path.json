@@ -11,7 +11,8 @@
 			"@atoms/*": ["src/components/atoms/*"],
 			"@molecules/*": ["src/components/molecules/*"],
 			"@pages/*": ["src/pages/*"],
-			"@constants/*": ["src/constants/*"]
+			"@constants/*": ["src/constants/*"],
+			"@types/*": ["src/types/*"]
 		}
 	}
 }
